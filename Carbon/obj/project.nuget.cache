@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Vte4VE/A78I=",
+  "success": true,
+  "projectFilePath": "C:\\Programming\\Projects\\Carbon\\Carbon\\Carbon\\Carbon.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\zache\\.nuget\\packages\\csvhelper\\33.0.1\\csvhelper.33.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

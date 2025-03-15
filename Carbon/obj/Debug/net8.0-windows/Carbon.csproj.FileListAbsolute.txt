@@ -1,0 +1,14 @@
+C:\Programming\Projects\Carbon\Carbon\Carbon\bin\Debug\net8.0-windows\Carbon.exe
+C:\Programming\Projects\Carbon\Carbon\Carbon\bin\Debug\net8.0-windows\Carbon.deps.json
+C:\Programming\Projects\Carbon\Carbon\Carbon\bin\Debug\net8.0-windows\Carbon.runtimeconfig.json
+C:\Programming\Projects\Carbon\Carbon\Carbon\bin\Debug\net8.0-windows\Carbon.dll
+C:\Programming\Projects\Carbon\Carbon\Carbon\bin\Debug\net8.0-windows\Carbon.pdb
+C:\Programming\Projects\Carbon\Carbon\Carbon\obj\Debug\net8.0-windows\Carbon.GeneratedMSBuildEditorConfig.editorconfig
+C:\Programming\Projects\Carbon\Carbon\Carbon\obj\Debug\net8.0-windows\Carbon.AssemblyInfoInputs.cache
+C:\Programming\Projects\Carbon\Carbon\Carbon\obj\Debug\net8.0-windows\Carbon.AssemblyInfo.cs
+C:\Programming\Projects\Carbon\Carbon\Carbon\obj\Debug\net8.0-windows\Carbon.csproj.CoreCompileInputs.cache
+C:\Programming\Projects\Carbon\Carbon\Carbon\obj\Debug\net8.0-windows\Carbon.dll
+C:\Programming\Projects\Carbon\Carbon\Carbon\obj\Debug\net8.0-windows\refint\Carbon.dll
+C:\Programming\Projects\Carbon\Carbon\Carbon\obj\Debug\net8.0-windows\Carbon.pdb
+C:\Programming\Projects\Carbon\Carbon\Carbon\obj\Debug\net8.0-windows\Carbon.genruntimeconfig.cache
+C:\Programming\Projects\Carbon\Carbon\Carbon\obj\Debug\net8.0-windows\ref\Carbon.dll
