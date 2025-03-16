@@ -1,12 +1,14 @@
 using System.Data;
-using System.Diagnostics;
+using System.Globalization;
+using CsvHelper;
+using CsvHelper.Configuration;
 
 namespace Carbon;
 
 public partial class Gui : Form {
-    public string DirectoryPath { get; set; }
+    private string DirectoryPath { get; set; }
     public Gui() {
-        DirectoryPath = Directory.GetCurrentDirectory();
+        DirectoryPath = Directory.GetCurrentDirectory() + "\\DIR";
         InitializeComponent();
     }
 
@@ -31,20 +33,7 @@ public partial class Gui : Form {
 
     private void refreshButton_Click(object sender, EventArgs e) {
         // Differentiate between which tab user is on
-        LoadData(DirectoryPath + SelectedTab() + ".csv");
-        
-        //
-        
-        var table = new DataTable();
-        table.Columns.Add("Name");
-        table.Columns.Add("Price");
-        table.Columns.Add("Buy Date");
-        table.Columns.Add("Quantity");
-
-        table.Rows.Add("Watch 420e45798056767", "$4.99", "12/31/2003", "4");
-        table.Rows.Add("Watch 69", "$8.99", "02/03/2004", "2");
-        
-        inventoryDataGridView.DataSource = table;
+        LoadData(DirectoryPath + "\\" + SelectedTab() + ".csv");
     }
     
     // Other functions
@@ -53,8 +42,28 @@ public partial class Gui : Form {
     }
 
     private void LoadData(string path) {
-        searchTextBox.Text = path;
+        using var reader = new StreamReader(path);
         
+        var config = new CsvConfiguration(CultureInfo.InvariantCulture) {
+            HasHeaderRecord = true
+        };
+        
+        using var csv = new CsvReader(reader, config);
+
+        var table = new DataTable();
+        // Adding the headers to the datatable
+        csv.Read();
+        csv.ReadHeader();
+        foreach(var header in csv?.HeaderRecord ?? new string[] {"ERROR: NO HEADER FOUND"}) {
+            table.Columns.Add(header);
+        }
+
+        // Adding the data to the datatable
+        foreach(var item in csv?.GetRecords<InventoryItem>() ?? Array.Empty<InventoryItem>()) {
+            table.Rows.Add(item.name, item.buyPrice, item.buyDate, item.location);
+        }
+        
+        inventoryDataGridView.DataSource = table;
     }
 
     private void NewAddWindow() {

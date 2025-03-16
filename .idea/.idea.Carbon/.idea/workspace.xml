@@ -7,7 +7,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5acbc3bf-ffd7-4422-9e07-3ef26bb09bb7" name="Changes" comment="" />
+    <list default="true" id="5acbc3bf-ffd7-4422-9e07-3ef26bb09bb7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Carbon/InventoryItem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Carbon/ListingsItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Carbon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Carbon/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/AddWindow.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/AddWindow.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/Gui.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/Gui.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/Inventory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/Item.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/Listings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/DIR/Inventory.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/DIR/Inventory.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/ref/Carbon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/ref/Carbon.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/refint/Carbon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/refint/Carbon.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/rider.project.model.nuget.info" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,10 +40,26 @@
   <component name="DpaMonitoringSettings">
     <option name="firstShow" value="false" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ZachPipes&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ZachPipes/Carbon.git&quot;,
+    &quot;accountId&quot;: &quot;a4c329a0-8f60-4b2b-bd55-3507b57638f8&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2uHfZcL8x8zOJjagcGuE4r8r5q0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -28,6 +68,8 @@
   &quot;keyToString&quot;: {
     &quot;.NET Project.Carbon.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -66,6 +108,9 @@
       <updated>1741910478295</updated>
       <workItem from="1741910479669" duration="10600000" />
       <workItem from="1741999670522" duration="5772000" />
+      <workItem from="1742062728751" duration="6388000" />
+      <workItem from="1742072309894" duration="2084000" />
+      <workItem from="1742142039128" duration="450000" />
     </task>
     <servers />
   </component>

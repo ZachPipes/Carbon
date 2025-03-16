@@ -12,3 +12,7 @@ C:\Programming\Projects\Carbon\Carbon\Carbon\obj\Debug\net8.0-windows\refint\Car
 C:\Programming\Projects\Carbon\Carbon\Carbon\obj\Debug\net8.0-windows\Carbon.pdb
 C:\Programming\Projects\Carbon\Carbon\Carbon\obj\Debug\net8.0-windows\Carbon.genruntimeconfig.cache
 C:\Programming\Projects\Carbon\Carbon\Carbon\obj\Debug\net8.0-windows\ref\Carbon.dll
+C:\Programming\Projects\Carbon\Carbon\Carbon\bin\Debug\net8.0-windows\CsvHelper.dll
+C:\Programming\Projects\Carbon\Carbon\Carbon\obj\Debug\net8.0-windows\Carbon.csproj.AssemblyReference.cache
+C:\Programming\Projects\Carbon\Carbon\Carbon\obj\Debug\net8.0-windows\Carbon.sourcelink.json
+C:\Programming\Projects\Carbon\Carbon\Carbon\obj\Debug\net8.0-windows\Carbon.csproj.Up2Date
