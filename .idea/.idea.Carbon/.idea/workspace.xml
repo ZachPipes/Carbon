@@ -8,15 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5acbc3bf-ffd7-4422-9e07-3ef26bb09bb7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Carbon/InventoryItem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Carbon/ListingsItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Carbon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Carbon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/AddWindow.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/AddWindow.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/AddWindow.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/AddWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/Carbon.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/Carbon.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Carbon/Gui.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/Gui.Designer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/Gui.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/Gui.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/Inventory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/Item.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/Listings.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.pdb" afterDir="false" />
@@ -24,13 +21,11 @@
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/apphost.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/ref/Carbon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/ref/Carbon.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/refint/Carbon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/refint/Carbon.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/rider.project.model.nuget.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +50,7 @@
     &quot;accountId&quot;: &quot;a4c329a0-8f60-4b2b-bd55-3507b57638f8&quot;
   }
 }</component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -110,15 +106,27 @@
       <workItem from="1741999670522" duration="5772000" />
       <workItem from="1742062728751" duration="6388000" />
       <workItem from="1742072309894" duration="2084000" />
-      <workItem from="1742142039128" duration="450000" />
+      <workItem from="1742142039128" duration="12569000" />
     </task>
+    <task id="LOCAL-00001" summary="Update">
+      <option name="closed" value="true" />
+      <created>1742142515836</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1742142515836</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
 </project>

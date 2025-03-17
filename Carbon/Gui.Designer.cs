@@ -33,11 +33,20 @@ partial class Gui {
         archivesTabPage = new System.Windows.Forms.TabPage();
         addButton = new System.Windows.Forms.Button();
         searchTextBox = new System.Windows.Forms.TextBox();
-        refreshButton = new System.Windows.Forms.Button();
         directoryButton = new System.Windows.Forms.Button();
+        deleteButton = new System.Windows.Forms.Button();
+        listingsDataGridView = new System.Windows.Forms.DataGridView();
+        ordersDataGridView = new System.Windows.Forms.DataGridView();
+        archivesDataGridView = new System.Windows.Forms.DataGridView();
         mainTabControl.SuspendLayout();
         inventoryTabPage.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)inventoryDataGridView).BeginInit();
+        listingsTabPage.SuspendLayout();
+        ordersTabPage.SuspendLayout();
+        archivesTabPage.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)listingsDataGridView).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)ordersDataGridView).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)archivesDataGridView).BeginInit();
         SuspendLayout();
         // 
         // mainTabControl
@@ -51,6 +60,10 @@ partial class Gui {
         mainTabControl.SelectedIndex = 0;
         mainTabControl.Size = new System.Drawing.Size(1565, 940);
         mainTabControl.TabIndex = 0;
+        //
+        mainTabControl.SelectedIndexChanged += (sender, e) => {
+            LoadData();
+        };
         // 
         // inventoryTabPage
         // 
@@ -66,7 +79,6 @@ partial class Gui {
         // inventoryDataGridView
         // 
         inventoryDataGridView.AllowUserToAddRows = false;
-        inventoryDataGridView.AllowUserToDeleteRows = false;
         inventoryDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
         inventoryDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
         inventoryDataGridView.ColumnHeadersHeight = 46;
@@ -79,6 +91,7 @@ partial class Gui {
         // 
         // listingsTabPage
         // 
+        listingsTabPage.Controls.Add(listingsDataGridView);
         listingsTabPage.Location = new System.Drawing.Point(8, 46);
         listingsTabPage.Name = "listingsTabPage";
         listingsTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -89,6 +102,7 @@ partial class Gui {
         // 
         // ordersTabPage
         // 
+        ordersTabPage.Controls.Add(ordersDataGridView);
         ordersTabPage.Location = new System.Drawing.Point(8, 46);
         ordersTabPage.Name = "ordersTabPage";
         ordersTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -99,6 +113,7 @@ partial class Gui {
         // 
         // archivesTabPage
         // 
+        archivesTabPage.Controls.Add(archivesDataGridView);
         archivesTabPage.Location = new System.Drawing.Point(8, 46);
         archivesTabPage.Name = "archivesTabPage";
         archivesTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -123,16 +138,7 @@ partial class Gui {
         searchTextBox.Name = "searchTextBox";
         searchTextBox.Size = new System.Drawing.Size(1557, 39);
         searchTextBox.TabIndex = 2;
-        // 
-        // refreshButton
-        // 
-        refreshButton.Location = new System.Drawing.Point(1575, 141);
-        refreshButton.Name = "refreshButton";
-        refreshButton.Size = new System.Drawing.Size(307, 77);
-        refreshButton.TabIndex = 3;
-        refreshButton.Text = "Refresh";
-        refreshButton.UseVisualStyleBackColor = true;
-        refreshButton.Click += refreshButton_Click;
+        searchTextBox.TextChanged += searchTextBox_TextChanged;
         // 
         // directoryButton
         // 
@@ -144,13 +150,61 @@ partial class Gui {
         directoryButton.UseVisualStyleBackColor = true;
         directoryButton.Click += directoryButton_Click;
         // 
+        // deleteButton
+        // 
+        deleteButton.Location = new System.Drawing.Point(1575, 141);
+        deleteButton.Name = "deleteButton";
+        deleteButton.Size = new System.Drawing.Size(307, 77);
+        deleteButton.TabIndex = 5;
+        deleteButton.Text = "Delete";
+        deleteButton.UseVisualStyleBackColor = true;
+        // 
+        // listingsDataGridView
+        // 
+        listingsDataGridView.AllowUserToAddRows = false;
+        listingsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+        listingsDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+        listingsDataGridView.ColumnHeadersHeight = 46;
+        listingsDataGridView.Location = new System.Drawing.Point(6, 5);
+        listingsDataGridView.Name = "listingsDataGridView";
+        listingsDataGridView.RowHeadersVisible = false;
+        listingsDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+        listingsDataGridView.Size = new System.Drawing.Size(1537, 877);
+        listingsDataGridView.TabIndex = 1;
+        // 
+        // ordersDataGridView
+        // 
+        ordersDataGridView.AllowUserToAddRows = false;
+        ordersDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+        ordersDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+        ordersDataGridView.ColumnHeadersHeight = 46;
+        ordersDataGridView.Location = new System.Drawing.Point(6, 5);
+        ordersDataGridView.Name = "ordersDataGridView";
+        ordersDataGridView.RowHeadersVisible = false;
+        ordersDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+        ordersDataGridView.Size = new System.Drawing.Size(1537, 877);
+        ordersDataGridView.TabIndex = 1;
+        // 
+        // archivesDataGridView
+        // 
+        archivesDataGridView.AllowUserToAddRows = false;
+        archivesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+        archivesDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+        archivesDataGridView.ColumnHeadersHeight = 46;
+        archivesDataGridView.Location = new System.Drawing.Point(6, 5);
+        archivesDataGridView.Name = "archivesDataGridView";
+        archivesDataGridView.RowHeadersVisible = false;
+        archivesDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+        archivesDataGridView.Size = new System.Drawing.Size(1537, 877);
+        archivesDataGridView.TabIndex = 1;
+        // 
         // Gui
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         ClientSize = new System.Drawing.Size(1894, 1009);
+        Controls.Add(deleteButton);
         Controls.Add(directoryButton);
-        Controls.Add(refreshButton);
         Controls.Add(searchTextBox);
         Controls.Add(addButton);
         Controls.Add(mainTabControl);
@@ -158,13 +212,24 @@ partial class Gui {
         mainTabControl.ResumeLayout(false);
         inventoryTabPage.ResumeLayout(false);
         ((System.ComponentModel.ISupportInitialize)inventoryDataGridView).EndInit();
+        listingsTabPage.ResumeLayout(false);
+        ordersTabPage.ResumeLayout(false);
+        archivesTabPage.ResumeLayout(false);
+        ((System.ComponentModel.ISupportInitialize)listingsDataGridView).EndInit();
+        ((System.ComponentModel.ISupportInitialize)ordersDataGridView).EndInit();
+        ((System.ComponentModel.ISupportInitialize)archivesDataGridView).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
 
+    private System.Windows.Forms.DataGridView listingsDataGridView;
+    private System.Windows.Forms.DataGridView ordersDataGridView;
+    private System.Windows.Forms.DataGridView archivesDataGridView;
+
+    private System.Windows.Forms.Button deleteButton;
+
     private System.Windows.Forms.DataGridView inventoryDataGridView;
 
-    private System.Windows.Forms.Button refreshButton;
     private System.Windows.Forms.Button directoryButton;
 
     private System.Windows.Forms.TextBox searchTextBox;
