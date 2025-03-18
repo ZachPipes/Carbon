@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Globalization;
 using CsvHelper;
@@ -39,7 +40,7 @@ public partial class Gui : Form {
 
     // Search function
     private void searchTextBox_TextChanged(object sender, EventArgs e) {
-        throw new System.NotImplementedException();
+        ObservableCollection<InventoryItem> collection = inventoryDataGridView.;
     }
 
     /// Other functions ///
@@ -108,6 +109,6 @@ public partial class Gui : Form {
     }
 
     private void SaveData() {
-        
+        throw new System.NotImplementedException();
     }
 }

@@ -9,18 +9,13 @@
   <component name="ChangeListManager">
     <list default="true" id="5acbc3bf-ffd7-4422-9e07-3ef26bb09bb7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Carbon/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Carbon/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/AddWindow.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/AddWindow.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/Carbon.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/Carbon.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/Gui.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/Gui.Designer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/Gui.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/Gui.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/DIR/Inventory.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/DIR/Inventory.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/apphost.exe" afterDir="false" />
@@ -107,6 +102,7 @@
       <workItem from="1742062728751" duration="6388000" />
       <workItem from="1742072309894" duration="2084000" />
       <workItem from="1742142039128" duration="12569000" />
+      <workItem from="1742242096525" duration="1172000" />
     </task>
     <task id="LOCAL-00001" summary="Update">
       <option name="closed" value="true" />
@@ -116,7 +112,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742142515836</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Commit 3">
+      <option name="closed" value="true" />
+      <created>1742242133783</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1742242133783</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +131,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
+    <MESSAGE value="Commit 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit 3" />
   </component>
 </project>

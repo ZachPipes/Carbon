@@ -60,10 +60,6 @@ partial class Gui {
         mainTabControl.SelectedIndex = 0;
         mainTabControl.Size = new System.Drawing.Size(1565, 940);
         mainTabControl.TabIndex = 0;
-        //
-        mainTabControl.SelectedIndexChanged += (sender, e) => {
-            LoadData();
-        };
         // 
         // inventoryTabPage
         // 
