@@ -14,27 +14,13 @@
       <change beforePath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/Carbon.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/bin/Debug/net8.0-windows/DIR/Inventory.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/obj/Carbon.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Carbon.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/obj/Carbon.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Carbon.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/Carbon.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/apphost.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/ref/Carbon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/ref/Carbon.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/refint/Carbon.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/Debug/net8.0-windows/refint/Carbon.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carbon/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Carbon/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,12 +39,12 @@
     &quot;assignee&quot;: &quot;ZachPipes&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ZachPipes/Carbon.git",
-    "accountId": "7b4f458c-e678-46e6-b09f-17e50552e20c"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ZachPipes/Carbon.git&quot;,
+    &quot;accountId&quot;: &quot;7b4f458c-e678-46e6-b09f-17e50552e20c&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
@@ -73,21 +59,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.Carbon.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.Carbon.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Carbon" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -139,7 +125,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742242133783</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Changed LoadData() to dynamically load data from different files">
+      <option name="closed" value="true" />
+      <created>1742328102936</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1742328102936</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,6 +145,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Update" />
     <MESSAGE value="Commit 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit 3" />
+    <MESSAGE value="Changed LoadData() to dynamically load data from different files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed LoadData() to dynamically load data from different files" />
   </component>
 </project>

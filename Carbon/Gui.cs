@@ -35,11 +35,56 @@ public partial class Gui : Form {
         throw new System.NotImplementedException();
     }
 
+    // Saves the data of the currently selected tab
+    private void saveButton_Click(object sender, EventArgs e) {
+        switch (mainTabControl.SelectedTab?.Text ?? "ERROR: TAB NOT FOUND") {
+            case("inventoryTabPage"):
+                SaveData<InventoryItem>("inventory.csv", inventoryDataGridView);
+                break;
+            case("listingsTabPage"):
+                SaveData<ListingsItem>("listings.csv", listingsDataGridView);
+                break;
+            case("ordersTabPage"):
+                SaveData<ListingsItem>("orders.csv", ordersDataGridView);
+                break;
+            case("archivesTabPage"):
+                SaveData<ListingsItem>("archives.csv", archivesDataGridView);
+                break;
+        }
+    }
+    
+    // Saves all data
+    private void saveAllButton_Click(object sender, EventArgs e) {
+        SaveData<InventoryItem>("inventory.csv", inventoryDataGridView);
+        SaveData<ListingsItem>("listings.csv", listingsDataGridView);
+        SaveData<ListingsItem>("orders.csv", ordersDataGridView);
+        SaveData<ListingsItem>("archives.csv", archivesDataGridView);
+    }
+    
+    // Loads new data on tab switch
+    private void tabSwitch(object sender, EventArgs e) {
+        switch (mainTabControl.SelectedTab?.Text ?? "ERROR: TAB NOT FOUND") {
+            case("Inventory"):
+                LoadData<InventoryItem>("inventory.csv", inventoryDataGridView);
+                break;
+            case("Listings"):
+                LoadData<ListingsItem>("listings.csv", listingsDataGridView);
+                break;
+            case("Orders"):
+                LoadData<ListingsItem>("orders.csv", ordersDataGridView);
+                break;
+            case("Archives"):
+                LoadData<ListingsItem>("archives.csv", archivesDataGridView);
+                break;
+        }
+    }
     // Search function
     private void searchTextBox_TextChanged(object sender, EventArgs e) {
         //ObservableCollection<InventoryItem> collection = inventoryDataGridView.;
     }
 
+    
+    
     /// Other functions ///
     // Ensures required files are present
     // - (folder) Data
@@ -56,8 +101,8 @@ public partial class Gui : Form {
         var existingFiles = Directory.GetFiles(DirectoryPath, "*.csv");
         var missingFiles = requiredFiles.Except(existingFiles).ToArray();
 
-        if (missingFiles.Length != 0) return;
-        
+        if (missingFiles.Length == 0) return;
+
         foreach (var missingFile in missingFiles) {
             File.Create(DirectoryPath + "\\" + missingFile).Dispose();
             using var writer = new StreamWriter(DirectoryPath + "\\" + missingFile);
@@ -84,34 +129,52 @@ public partial class Gui : Form {
 
     // Dynamically loads the dataGridViews on each page of the program
     private void LoadData<T>(string fileName, DataGridView dataGridView) {
-        var path = Path.Combine(DirectoryPath + "\\" + fileName);
-        using var reader = new StreamReader(path);
+        using var reader = new StreamReader(DirectoryPath + "\\" + fileName);
 
         var config = new CsvConfiguration(CultureInfo.InvariantCulture) {
             HasHeaderRecord = true
         };
 
-        using var csv = new CsvReader(reader, config);
+        using(var csv = new CsvReader(reader, config)) {
+            var table = new DataTable();
 
-        var table = new DataTable();
+            // Adding the headers to the table
+            csv.Read();
+            csv.ReadHeader();
+            foreach (var header in csv.HeaderRecord ?? ["ERROR: NO HEADER FOUND"]) {
+                table.Columns.Add(header);
+            }
 
-        // Adding the headers to the table
-        csv.Read();
-        csv.ReadHeader();
-        foreach (var header in csv.HeaderRecord ?? ["ERROR: NO HEADER FOUND"]) {
-            table.Columns.Add(header);
+            // Adding the data to the datatable
+            foreach (var item in csv.GetRecords<T>()) {
+                var properties = typeof(T).GetProperties();
+                table.Rows.Add(properties.Select(p => p.GetValue(item)).ToArray());
+            }
+
+            dataGridView.DataSource = table;
         }
-
-        // Adding the data to the datatable
-        foreach (var item in csv.GetRecords<T>()) {
-            var properties = typeof(T).GetProperties();
-            table.Rows.Add(properties.Select(p => p.GetValue(item)).ToArray());
-        }
-
-        dataGridView.DataSource = table;
+        
+        //SaveData<T>(fileName, dataGridView);
     }
 
-    private void SaveData<T>(string fileName, DataGridView dataGridView) {
-        throw new System.NotImplementedException();
+    private void SaveData<T>(string fileName, DataGridView dataGridView) { ;
+        var records = new List<T>();
+
+        // Assigning data
+        dataGridView.DataSource = records;
+
+        using(var writer = new StreamWriter(DirectoryPath + "\\" + fileName)) {
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture) {
+                HasHeaderRecord = true
+            };
+
+            using var csv = new CsvWriter(writer, config);
+            // Writing the headers
+            csv.WriteHeader<T>();
+            csv.NextRecord();
+
+            // Writing the data
+            csv.WriteRecords(records);
+        }
     }
 }
