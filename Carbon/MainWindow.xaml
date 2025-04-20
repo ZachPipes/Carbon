@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-
         mc:Ignorable="d"
+
         Title="Carbon" Height="450" Width="800">
     <Window.Resources>
         <Style x:Key="NavbarButtonStyle" TargetType="Button">
@@ -14,7 +14,7 @@
             <Setter Property="BorderThickness" Value="10" />
             <Setter Property="Padding" Value="10,5" />
             <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -37,24 +37,29 @@
                     Background="#FF2D2D30"
                     Height="50"
                     DockPanel.Dock="Top">
-            <Button Content="Dashboard"
+            <Button x:Name="DashboardButton"
+                    Content="Dashboard"
                     Style="{StaticResource NavbarButtonStyle}"
                     Click="NavbarButton_Click" />
-            <Button Content="Inventory"
+            <Button x:Name="InventoryButton"
+                    Content="Inventory"
                     Style="{StaticResource NavbarButtonStyle}"
                     Click="NavbarButton_Click" />
-            <Button Content="Listings"
+            <Button x:Name="ListingsButton"
+                    Content="Listings"
                     Style="{StaticResource NavbarButtonStyle}"
                     Click="NavbarButton_Click" />
-            <Button Content="Orders"
+            <Button x:Name="OrdersButton"
+                    Content="Orders"
                     Style="{StaticResource NavbarButtonStyle}"
                     Click="NavbarButton_Click" />
-            <Button Content="Pages"
+            <Button x:Name="PagesButton"
+                    Content="Pages"
                     Style="{StaticResource NavbarButtonStyle}"
                     Click="NavbarButton_Click" />
         </StackPanel>
 
         <!-- Page -->
-        <Frame Name="MainFrame" NavigationUIVisibility="Hidden" Source="DashboardPage.xaml"/>
+        <Frame Name="MainFrame" NavigationUIVisibility="Hidden" Source="DashboardPage.xaml" />
     </DockPanel>
 </Window>

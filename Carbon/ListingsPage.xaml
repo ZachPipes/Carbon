@@ -5,7 +5,26 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
       Title="ListingsPage" Height="450" Width="800">
+
     <Grid>
-        <TextBlock Text="Welcome to LISTINGS!" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Filter Bar -->
+        <StackPanel Grid.Column="0" Background="#FF3C3C40">
+            <TextBlock Text="Filter by Category" Foreground="White" Margin="28,10,0,10" />
+            <ComboBox x:Name="CategoryFilter" Width="150" Margin="0,0,0,10"/>
+            <Button Content="Clear Filter" Width="150" Margin="0,0,0,10"/>
+        </StackPanel>
+
+        <!-- Data -->
+        <DataGrid x:Name="ProductDataGrid" Grid.Column="1" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Category" Binding="{Binding Category}"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

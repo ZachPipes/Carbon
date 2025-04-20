@@ -1,28 +1,29 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Carbon;
 
 public partial class MainWindow {
-    private void ShowError(string errorMessage) {
-        MessageBox.Show(errorMessage, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-    }
-    
     public MainWindow() {
         InitializeComponent();
     }
 
     private void NavbarButton_Click(object sender, RoutedEventArgs e) {
+        ResetButtons();
         if (sender is Button button && button.Content is string content) {
             switch (content) {
                 case "Dashboard":
                     MainFrame.Navigate(new DashboardPage());
+                    DashboardButton.Foreground = new SolidColorBrush(Colors.Black);
+                    DashboardButton.Background = new SolidColorBrush(Color.FromArgb(255,169,169,169));
                     break;
                 case "Inventory":
                     MainFrame.Navigate(new InventoryPage());
                     break;
                 case "Listings":
                     MainFrame.Navigate(new ListingsPage());
+                    Utils.LoadFile("Listings");
                     break;
                 case "Orders":
                     MainFrame.Navigate(new OrdersPage());
@@ -31,9 +32,26 @@ public partial class MainWindow {
                     MainFrame.Navigate(new PagesPage());
                     break;
                 default:
-                    ShowError($"Unknown Navbar button clicked: \"{content}\".\nSend a picture of this to me.");
+                    Utils.ShowError($"Unknown Navbar button clicked: \"{content}\".\nSend a picture of this to me.");
                     break;
             }
         }
+    }
+
+    private void ResetButtons() {
+        private List<Button> button = new { DashboardButton };
+        for(button : Buttons) {
+            
+        }
+        DashboardButton.Background = new SolidColorBrush(Color.FromArgb(255,45,45,48));
+        DashboardButton.Foreground = new SolidColorBrush(Colors.White);
+        InventoryButton.Background = new SolidColorBrush(Color.FromArgb(255,45,45,48));
+        InventoryButton.Foreground = new SolidColorBrush(Colors.White);
+        ListingsButton.Background = new SolidColorBrush(Color.FromArgb(255,45,45,48));
+        ListingsButton.Foreground = new SolidColorBrush(Colors.White);
+        OrdersButton.Background = new SolidColorBrush(Color.FromArgb(255,45,45,48));
+        OrdersButton.Foreground = new SolidColorBrush(Colors.White);
+        PagesButton.Background = new SolidColorBrush(Color.FromArgb(255,45,45,48));
+        PagesButton.Foreground = new SolidColorBrush(Colors.White);
     }
 }
