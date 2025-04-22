@@ -1,8 +1,6 @@
-﻿using System.Windows.Controls;
+﻿namespace Carbon;
 
-namespace Carbon;
-
-public partial class DashboardPage : Page {
+public partial class DashboardPage {
     public DashboardPage() {
         InitializeComponent();
     }
