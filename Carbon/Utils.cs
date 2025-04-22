@@ -30,7 +30,7 @@ public static class Utils {
         
         var lines = File.ReadAllLines(filePath);
     }
-
+    
     public static async Task<string> ebayAuth() {
         // TODO: HIDE THESE VALUES BEFORE COMMITING
         const string clientId = "";
