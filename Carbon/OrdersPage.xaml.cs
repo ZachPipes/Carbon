@@ -4,15 +4,15 @@ public partial class OrdersPage {
     public OrdersPage() {
         InitializeComponent();
 
-        var token = Utils.ebayAuth().GetAwaiter().GetResult();
-        
-        var ordersJson = Utils.GetEbayApiDataAsync("https://api.sandbox.ebay.com/sell/fulfillment/v1/order", token).GetAwaiter().GetResult();
-        Utils.SaveOrdersToCsvAsync(ordersJson).GetAwaiter().GetResult();
-
-        var inventoryJson = Utils.GetEbayApiDataAsync("https://api.sandbox.ebay.com/sell/inventory/v1/inventory_item", token).GetAwaiter().GetResult();
-        Utils.SaveInventoryToCsvAsync(inventoryJson).GetAwaiter().GetResult();
-
-        Console.WriteLine("Done syncing CSV files.");
+        // var token = Utils.EbayAuth().GetAwaiter().GetResult();
+        //
+        // var ordersJson = Utils.GetEbayApiDataAsync("https://api.sandbox.ebay.com/sell/fulfillment/v1/order", token).GetAwaiter().GetResult();
+        // Utils.SaveOrdersToCsvAsync(ordersJson).GetAwaiter().GetResult();
+        //
+        // var inventoryJson = Utils.GetEbayApiDataAsync("https://api.sandbox.ebay.com/sell/inventory/v1/inventory_item", token).GetAwaiter().GetResult();
+        // Utils.SaveInventoryToCsvAsync(inventoryJson).GetAwaiter().GetResult();
+        //
+        // Console.WriteLine("Done syncing CSV files.");
     }
 }
 

@@ -9,7 +9,6 @@ namespace Carbon;
 public partial class MainWindow {
     public MainWindow() {
         InitializeComponent();
-        LoadData();
     }
 
     private void NavbarButton_Click(object sender, RoutedEventArgs e) {
@@ -26,44 +25,36 @@ public partial class MainWindow {
                 MainFrame.Navigate(new InventoryPage());
                 InventoryButton.Foreground = new SolidColorBrush(Colors.Black);
                 InventoryButton.Background = new SolidColorBrush(Color.FromArgb(255,169,169,169));
-                Utils.LoadFile("Inventory");
+                
+                MainFrame.NavigationService.LoadCompleted += (sender, args) => {
+                    // Now check if the content is InventoryPage
+                    if (MainFrame.Content is InventoryPage inventoryPage)
+                    {
+                        // Load file into the DataGrid of the InventoryPage
+                        Utils.LoadFile("Inventory", inventoryPage.InventoryDataGrid);
+                    }
+                };
+                
                 break;
             case "Listings":
                 MainFrame.Navigate(new ListingsPage());
                 ListingsButton.Foreground = new SolidColorBrush(Colors.Black);
                 ListingsButton.Background = new SolidColorBrush(Color.FromArgb(255,169,169,169));
-                Utils.LoadFile("Listings");
                 break;
             case "Orders":
                 MainFrame.Navigate(new OrdersPage());
                 OrdersButton.Foreground = new SolidColorBrush(Colors.Black);
                 OrdersButton.Background = new SolidColorBrush(Color.FromArgb(255,169,169,169));
-                Utils.LoadFile("Orders");
                 break;
             case "Pages":
+                MainFrame.Navigate(new PagesPage());
                 PagesButton.Foreground = new SolidColorBrush(Colors.Black);
                 PagesButton.Background = new SolidColorBrush(Color.FromArgb(255,169,169,169));
-                MainFrame.Navigate(new PagesPage());
                 break;
             default:
                 Utils.ShowError($"Unknown Navbar button clicked: \"{content}\".\nSend a picture of this to me.");
                 break;
         }
-    }
-
-    private void LoadData() {
-        var files = new List<String> { "Inventory", "Listings", "Orders" };
-        foreach (var file in files) {
-            Utils.LoadFile(file);
-        }
-        
-        string accessToken = "";
-        int offset = 0;
-
-        using HttpClient client = new HttpClient();
-        client.BaseAddress = new Uri("https://api.ebay.com/");
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-        client.DefaultRequestHeaders.Add("Accept", "application/json");
     }
 
     private void ResetButtons() {

@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Windows;
+using System.Windows.Controls;
 using CsvHelper;
 
 namespace Carbon;
@@ -14,7 +15,7 @@ public static class Utils {
         MessageBox.Show(errorMessage, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
     }
 
-    public static void LoadFile(string fileName) {
+    public static void LoadFile(string fileName, DataGrid grid) {
         // TODO: MAKE THIS COMPATIBLE WITH ANY DIRECTORY NAME
         var filePath = $@"C:\Users\{Environment.UserName}\Documents\Carbon";
 
@@ -24,11 +25,31 @@ public static class Utils {
 
         filePath += $@"\{fileName}.csv";
 
-        if (!File.Exists(filePath)) {
+        if (File.Exists(filePath)) {
+            var lines = File.ReadAllLines(filePath);
+            var items = new List<InventoryItem>();
+            for (int i = 1; i < lines.Length; i++) {
+                var line = lines[i];
+                var columns = line.Split(',');
+
+                if (columns.Length != 5) return;
+
+                var item = new InventoryItem() {
+                    Name = columns[0],
+                    Category = columns[1],
+                    Paid = double.TryParse(columns[2], out double paid) ? paid : 0,
+                    Location = columns[3],
+                    Bin = columns[4]
+                };
+                Console.WriteLine($"Adding item: {item.Name}");
+                items.Add(item);
+            }
+
+            grid.ItemsSource = items;
+        }
+        else {
             File.Create(filePath).Close();
         }
-
-        var lines = File.ReadAllLines(filePath);
     }
 
     public static async Task<string> EbayAuth() {

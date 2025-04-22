@@ -4,53 +4,63 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
-      
+
       Title="InventoryPage" Height="450" Width="800">
-    
-      <Page.Resources>
-            <Style x:Key="OrderButtonStyle" TargetType="Button">
-                  <Setter Property="Foreground" Value="White" />
-                  <Setter Property="Background" Value="#FF51515A" />
-                  <Setter Property="BorderBrush" Value="#FF51515A" />
-                  <Setter Property="BorderThickness" Value="10" />
-                  <Setter Property="Padding" Value="10,5" />
-                  <Setter Property="Cursor" Value="Hand" />
-                  <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-            </Style>
-      </Page.Resources>
-      
-      <Grid>
-            <!-- Inventory Navbar -->
-            <DockPanel>
-                  <StackPanel Orientation="Horizontal"
-                              Background="#FF51515A"
-                              Height="50"
-                              DockPanel.Dock="Top">
-                        <Button x:Name="AddInventoryButton"
-                                Content="Add"
-                                Style="{StaticResource OrderButtonStyle}"
-                                Click="AddInventoryButton_OnClick" />
-                  </StackPanel>
-            </DockPanel>
-            
+
+    <Page.Resources>
+        <Style x:Key="OrderButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#FF51515A" />
+            <Setter Property="BorderBrush" Value="#FF51515A" />
+            <Setter Property="BorderThickness" Value="10" />
+            <Setter Property="Padding" Value="10,5" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        </Style>
+    </Page.Resources>
+
+    <DockPanel>
+        <!-- Inventory Toolbar -->
+        <StackPanel Orientation="Horizontal"
+                    Background="#FF51515A"
+                    Height="50"
+                    DockPanel.Dock="Top"
+                    VerticalAlignment="Top">
+            <Button x:Name="AddInventoryButton"
+                    Content="Add"
+                    Style="{StaticResource OrderButtonStyle}"
+                    Click="AddInventoryButton_OnClick" />
+        </StackPanel>
+
+        <!-- Page Data -->
+        <Grid>
             <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="200"/>
-                  <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            
-            <!-- Filter Bar -->
+
+            <!-- Filter Column -->
             <StackPanel Grid.Column="0" Background="#FF3C3C40">
-                  <TextBlock Text="Filter by Category" Foreground="White" Margin="28,10,0,10" />
-                  <ComboBox x:Name="CategoryFilter" Width="150" Margin="0,0,0,10"/>
+                <TextBlock Text="Filter" 
+                           FontSize="18" 
+                           HorizontalAlignment="Center" 
+                           Foreground="White" 
+                           Margin="20,10,20,10" />
             </StackPanel>
+            <!-- Filter Column -->
 
             <!-- Data -->
-            <DataGrid x:Name="ProductDataGrid" Grid.Column="1" AutoGenerateColumns="False">
-                  <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                        <DataGridTextColumn Header="Category" Binding="{Binding Category}"/>
-                        <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
-                  </DataGrid.Columns>
+            <DataGrid x:Name="InventoryDataGrid" Grid.Column="1" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="Category" Binding="{Binding Category}" />
+                    <DataGridTextColumn Header="Paid" Binding="{Binding Paid}" />
+                    <DataGridTextColumn Header="Location" Binding="{Binding Location}" />
+                    <DataGridTextColumn Header="Bin" Binding="{Binding Bin}" />
+                </DataGrid.Columns>
             </DataGrid>
-      </Grid>
+            <!-- Data -->
+        </Grid>
+        <!-- Page Data -->
+    </DockPanel>
 </Page>

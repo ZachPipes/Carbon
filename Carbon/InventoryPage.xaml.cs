@@ -12,3 +12,11 @@ public partial class InventoryPage : Page {
         throw new NotImplementedException();
     }
 }
+
+public class InventoryItem {
+    public string Name { get; set; }
+    public string Category { get; set; }
+    public double Paid { get; set; }
+    public string Location { get; set; }
+    public string Bin { get; set; }
+}
