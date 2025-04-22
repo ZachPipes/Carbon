@@ -39,19 +39,19 @@ public partial class MainWindow {
     }
 
     private void ResetButtons() {
-        private List<Button> button = new { DashboardButton };
-        for(button : Buttons) {
-            
-        }
-        DashboardButton.Background = new SolidColorBrush(Color.FromArgb(255,45,45,48));
-        DashboardButton.Foreground = new SolidColorBrush(Colors.White);
-        InventoryButton.Background = new SolidColorBrush(Color.FromArgb(255,45,45,48));
-        InventoryButton.Foreground = new SolidColorBrush(Colors.White);
-        ListingsButton.Background = new SolidColorBrush(Color.FromArgb(255,45,45,48));
-        ListingsButton.Foreground = new SolidColorBrush(Colors.White);
-        OrdersButton.Background = new SolidColorBrush(Color.FromArgb(255,45,45,48));
-        OrdersButton.Foreground = new SolidColorBrush(Colors.White);
-        PagesButton.Background = new SolidColorBrush(Color.FromArgb(255,45,45,48));
-        PagesButton.Foreground = new SolidColorBrush(Colors.White);
+        // private List<Button> button = new { DashboardButton };
+        // for(button : Buttons) {
+        //     
+        // }
+        // DashboardButton.Background = new SolidColorBrush(Color.FromArgb(255,45,45,48));
+        // DashboardButton.Foreground = new SolidColorBrush(Colors.White);
+        // InventoryButton.Background = new SolidColorBrush(Color.FromArgb(255,45,45,48));
+        // InventoryButton.Foreground = new SolidColorBrush(Colors.White);
+        // ListingsButton.Background = new SolidColorBrush(Color.FromArgb(255,45,45,48));
+        // ListingsButton.Foreground = new SolidColorBrush(Colors.White);
+        // OrdersButton.Background = new SolidColorBrush(Color.FromArgb(255,45,45,48));
+        // OrdersButton.Foreground = new SolidColorBrush(Colors.White);
+        // PagesButton.Background = new SolidColorBrush(Color.FromArgb(255,45,45,48));
+        // PagesButton.Foreground = new SolidColorBrush(Colors.White);
     }
 }
