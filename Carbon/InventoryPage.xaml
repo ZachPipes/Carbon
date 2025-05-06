@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
 
-      Title="InventoryPage" Height="450" Width="800">
+      Title="InventoryPage">
 
     <Page.Resources>
         <Style x:Key="OrderButtonStyle" TargetType="Button">
@@ -19,48 +19,43 @@
         </Style>
     </Page.Resources>
 
-    <DockPanel>
+    <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <!-- Inventory Toolbar -->
         <StackPanel Orientation="Horizontal"
                     Background="#FF51515A"
                     Height="50"
-                    DockPanel.Dock="Top"
-                    VerticalAlignment="Top">
+                    DockPanel.Dock="Top">
             <Button x:Name="AddInventoryButton"
                     Content="Add"
                     Style="{StaticResource OrderButtonStyle}"
                     Click="AddInventoryButton_OnClick" />
         </StackPanel>
 
-        <!-- Page Data -->
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <!-- Filter -->
+        <StackPanel Background="#FF3C3C40" Width="140" Margin="0,0,0,0">
+            <Expander Header="Categories" Foreground="White" FontWeight="Bold">
+                <StackPanel>
+                    <ListBox>
+                        <ListBoxItem>Option 1</ListBoxItem>
+                        <ListBoxItem>Option 2</ListBoxItem>
+                        <ListBoxItem>Option 3</ListBoxItem>
+                    </ListBox>
+                    <CheckBox Content="ABC"/>
+                </StackPanel>
+            </Expander>
+        </StackPanel>
 
-            <!-- Filter Column -->
-            <StackPanel Grid.Column="0" Background="#FF3C3C40">
-                <TextBlock Text="Filter" 
-                           FontSize="18" 
-                           HorizontalAlignment="Center" 
-                           Foreground="White" 
-                           Margin="20,10,20,10" />
-            </StackPanel>
-            <!-- Filter Column -->
+        <!-- InventoryData -->
+        <DataGrid x:Name="InventoryDataGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Category" Binding="{Binding Category}" />
+                <DataGridTextColumn Header="Paid" Binding="{Binding Paid}" />
+                <DataGridTextColumn Header="Location" Binding="{Binding Location}" />
+                <DataGridTextColumn Header="Bin" Binding="{Binding Bin}" />
+            </DataGrid.Columns>
+        </DataGrid>
 
-            <!-- Data -->
-            <DataGrid x:Name="InventoryDataGrid" Grid.Column="1" AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                    <DataGridTextColumn Header="Category" Binding="{Binding Category}" />
-                    <DataGridTextColumn Header="Paid" Binding="{Binding Paid}" />
-                    <DataGridTextColumn Header="Location" Binding="{Binding Location}" />
-                    <DataGridTextColumn Header="Bin" Binding="{Binding Bin}" />
-                </DataGrid.Columns>
-            </DataGrid>
-            <!-- Data -->
-        </Grid>
-        <!-- Page Data -->
     </DockPanel>
+
 </Page>
