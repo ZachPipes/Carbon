@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿using System.Collections.ObjectModel;
+using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -7,6 +9,7 @@ using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using CsvHelper;
+using log4net.Util;
 
 namespace Carbon;
 
@@ -17,32 +20,32 @@ public static class Utils {
     }
 
     // Loads a csv file from 'fileName' into the 'grid'
-    // Will create a 
-    public static void LoadFile(string fileName, DataGrid grid) {
+    // Will create a directory if one DNE
+    public static ObservableCollection<InventoryItem> LoadFile(string fileName, DataGrid grid) {
         // TODO: MAKE THIS COMPATIBLE WITH ANY DIRECTORY NAME
         var filePath = $@"C:\Users\{Environment.UserName}\Documents\Carbon";
 
         // If directory DNE -> creates directory and returns 
         if (!Directory.Exists(filePath)) {
             Directory.CreateDirectory(filePath);
-            return;
+            return new ObservableCollection<InventoryItem>();
         }
 
         filePath += $@"\{fileName}.csv";
 
         if (File.Exists(filePath)) {
             var lines = File.ReadAllLines(filePath);
-            var items = new List<InventoryItem>();
+            var items = new ObservableCollection<InventoryItem>();
             for (int i = 1; i < lines.Length; i++) {
                 var line = lines[i];
                 var columns = line.Split(',');
 
-                if (columns.Length != 5) return;
+                if (columns.Length != 5) ShowError($"Invalid number of columns for {filePath} at row {i}");
 
                 var item = new InventoryItem() {
                     Name = columns[0],
                     Category = columns[1],
-                    Paid = double.TryParse(columns[2], out double paid) ? paid : 0,
+                    Paid = double.TryParse(columns[2], out var paid) ? paid : 0,
                     Location = columns[3],
                     Bin = columns[4]
                 };
@@ -50,12 +53,13 @@ public static class Utils {
             }
 
             grid.ItemsSource = items;
+            return items;
         }
-        else {
-            File.Create(filePath).Close();
-        }
+
+        File.Create(filePath).Close();
+        return new ObservableCollection<InventoryItem>();
     }
-    
+
     // AI functions that I need to look through
     //
     // public static async Task<string> EbayAuth() {
