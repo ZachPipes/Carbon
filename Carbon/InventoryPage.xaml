@@ -67,10 +67,10 @@
         <!-- Filter -->
         <StackPanel Background="#FF3C3C40" Width="140" Margin="0,0,0,0">
             <!-- Search Box -->
-            <TextBox x:Name="SearchBox" Style="{StaticResource GhosttextTextBoxStyle}" 
+            <TextBox x:Name="NameSearchBox" Style="{StaticResource GhosttextTextBoxStyle}" 
                      Tag="Search by Name..."
                      Margin="5"
-                     TextChanged="SearchBoxTextChange"/>
+                     TextChanged="NameSearchBoxTextChange"/>
             
             <!-- Categories -->
             <Expander Header="Categories" Foreground="White" FontWeight="Bold">
@@ -86,6 +86,30 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </Expander>
+            
+            <!-- Price -->
+            
+            <!-- Location -->
+            <TextBox x:Name="LocSearchBox" Style="{StaticResource GhosttextTextBoxStyle}" 
+                     Tag="Search by Location..."
+                     Margin="5"
+                     TextChanged="LocSearchBoxTextChange"/>
+            
+            <!-- Bin -->
+            <Expander Header="Bin" Foreground="White" FontWeight="Bold">
+                <ItemsControl x:Name="BinItemsControl" ItemsSource="{Binding UniqueCats}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding}"
+                                      Margin="5,2"
+                                      Foreground="White"
+                                      Checked="CatChkbx_Checked"
+                                      Unchecked="CatChkbx_Unchecked"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Expander>
+            
         </StackPanel>
 
         <!-- InventoryData -->

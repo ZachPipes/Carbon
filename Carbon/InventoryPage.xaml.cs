@@ -42,12 +42,22 @@ public partial class InventoryPage {
             ApplyFilter();
         }
     }
+    
+    private void NameSearchBoxTextChange(object sender, TextChangedEventArgs e) {
+        ApplyFilter();
+    }
+
+    private void LocSearchBoxTextChange(object sender, TextChangedEventArgs e) {
+        ApplyFilter();
+    }
+    
+    //TODO: Finish writing filter logic and clean it up
 
     private void ApplyFilter() {
         var filtered = items.AsEnumerable();
         
-        if (!string.IsNullOrWhiteSpace(SearchBox.Text)) {
-            filtered = filtered.Where(i => i.Name.Contains(SearchBox.Text, StringComparison.OrdinalIgnoreCase));
+        if (!string.IsNullOrWhiteSpace(NameSearchBox.Text)) {
+            filtered = filtered.Where(i => i.Name.Contains(NameSearchBox.Text, StringComparison.OrdinalIgnoreCase));
         }
 
         if (SelectedCats.Any()) {
@@ -57,10 +67,6 @@ public partial class InventoryPage {
         filteredItems.Clear();
         foreach (var item in filtered)
             filteredItems.Add(item);
-    }
-
-    private void SearchBoxTextChange(object sender, TextChangedEventArgs e) {
-        ApplyFilter();
     }
 }
 
