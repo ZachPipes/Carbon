@@ -89,15 +89,7 @@
         </StackPanel>
 
         <!-- InventoryData -->
-        <DataGrid x:Name="InventoryDataGrid">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="Category" Binding="{Binding Category}" />
-                <DataGridTextColumn Header="Paid" Binding="{Binding Paid}" />
-                <DataGridTextColumn Header="Location" Binding="{Binding Location}" />
-                <DataGridTextColumn Header="Bin" Binding="{Binding Bin}" />
-            </DataGrid.Columns>
-        </DataGrid>
+        <DataGrid x:Name="InventoryDataGrid"/>
 
     </DockPanel>
 

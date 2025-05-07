@@ -1,15 +1,9 @@
 ﻿using System.Collections.ObjectModel;
-using System.Data;
 using System.Globalization;
 using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Text.Json;
 using System.Windows;
-using System.Windows.Controls;
 using CsvHelper;
-using log4net.Util;
+using CsvHelper.Configuration;
 
 namespace Carbon;
 
@@ -21,7 +15,7 @@ public static class Utils {
 
     // Loads a csv file from 'fileName' into the 'grid'
     // Will create a directory if one DNE
-    public static ObservableCollection<InventoryItem> LoadFile(string fileName, DataGrid grid) {
+    public static ObservableCollection<InventoryItem> LoadFile(string fileName) {
         // TODO: MAKE THIS COMPATIBLE WITH ANY DIRECTORY NAME
         var filePath = $@"C:\Users\{Environment.UserName}\Documents\Carbon";
 
@@ -32,32 +26,26 @@ public static class Utils {
         }
 
         filePath += $@"\{fileName}.csv";
+        var items = new ObservableCollection<InventoryItem>();
 
         if (File.Exists(filePath)) {
-            var lines = File.ReadAllLines(filePath);
-            var items = new ObservableCollection<InventoryItem>();
-            for (int i = 1; i < lines.Length; i++) {
-                var line = lines[i];
-                var columns = line.Split(',');
-
-                if (columns.Length != 5) ShowError($"Invalid number of columns for {filePath} at row {i}");
-
-                var item = new InventoryItem() {
-                    Name = columns[0],
-                    Category = columns[1],
-                    Paid = double.TryParse(columns[2], out var paid) ? paid : 0,
-                    Location = columns[3],
-                    Bin = columns[4]
-                };
-                items.Add(item);
+            using (var reader = new StreamReader(filePath))
+            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture) { HasHeaderRecord = true })) {
+                try {
+                    var records = csv.GetRecords<InventoryItem>().ToList();
+                    foreach (var record in records) {
+                        items.Add(record);
+                    }
+                }
+                catch (CsvHelperException ex) {
+                    ShowError($"Error reading CSV file: {ex.Message}");
+                }
             }
-
-            grid.ItemsSource = items;
-            return items;
+        } else {
+            File.Create(filePath).Close();
         }
-
-        File.Create(filePath).Close();
-        return new ObservableCollection<InventoryItem>();
+        
+        return items;
     }
 
     // AI functions that I need to look through

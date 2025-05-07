@@ -14,7 +14,7 @@ public partial class InventoryPage {
         InitializeComponent();
         // TODO: Make searches cross compatible, ie I can use search by name and by category at the same time
 
-        items = Utils.LoadFile("Inventory", InventoryDataGrid);
+        items = Utils.LoadFile("Inventory");
         filteredItems = new ObservableCollection<InventoryItem>(items);
         InventoryDataGrid.ItemsSource = filteredItems;
 
@@ -32,39 +32,35 @@ public partial class InventoryPage {
         if (sender is CheckBox checkBox && checkBox.Content is string category) {
             if (!SelectedCats.Contains(category))
                 SelectedCats.Add(category);
-            ApplyFilter("category");
+            ApplyFilter();
         }
     }
 
     private void CatChkbx_Unchecked(object sender, RoutedEventArgs e) {
         if (sender is CheckBox checkBox && checkBox.Content is string category) {
             SelectedCats.Remove(category);
-            ApplyFilter("category");
+            ApplyFilter();
         }
     }
 
-    private void ApplyFilter(string type) {
-        filteredItems.Clear();
-        IEnumerable<InventoryItem> filtered;
-        switch (type) {
-            case "name":
-                filtered = items.Where(i => i.Name.Contains(SearchBox.Text, StringComparison.OrdinalIgnoreCase));
-                break;
-            case "category":
-                filtered = SelectedCats.Any() ? items.Where(i => SelectedCats.Contains(i.Category)) : items;
-                break;
-            default:
-                filtered = items;
-                break;
+    private void ApplyFilter() {
+        var filtered = items.AsEnumerable();
+        
+        if (!string.IsNullOrWhiteSpace(SearchBox.Text)) {
+            filtered = filtered.Where(i => i.Name.Contains(SearchBox.Text, StringComparison.OrdinalIgnoreCase));
         }
 
+        if (SelectedCats.Any()) {
+            filtered = filtered.Where(i => SelectedCats.Contains(i.Category));
+        }
+
+        filteredItems.Clear();
         foreach (var item in filtered)
             filteredItems.Add(item);
     }
 
     private void SearchBoxTextChange(object sender, TextChangedEventArgs e) {
-        
-        ApplyFilter("name");
+        ApplyFilter();
     }
 }
 
