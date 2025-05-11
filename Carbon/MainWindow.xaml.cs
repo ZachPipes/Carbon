@@ -1,5 +1,4 @@
-﻿using System.Net.Http;
-using System.Net.Http.Headers;
+﻿using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -21,31 +20,31 @@ public partial class MainWindow {
                 DashboardButton.Foreground = new SolidColorBrush(Colors.Black);
                 DashboardButton.Background = new SolidColorBrush(Color.FromArgb(255, 169, 169, 169));
                 break;
-            
+
             case "Inventory":
                 MainFrame.Navigate(new InventoryPage());
                 InventoryButton.Foreground = new SolidColorBrush(Colors.Black);
                 InventoryButton.Background = new SolidColorBrush(Color.FromArgb(255, 169, 169, 169));
                 break;
-            
+
             case "Listings":
                 MainFrame.Navigate(new ListingsPage());
                 ListingsButton.Foreground = new SolidColorBrush(Colors.Black);
                 ListingsButton.Background = new SolidColorBrush(Color.FromArgb(255, 169, 169, 169));
                 break;
-            
+
             case "Orders":
                 MainFrame.Navigate(new OrdersPage());
                 OrdersButton.Foreground = new SolidColorBrush(Colors.Black);
                 OrdersButton.Background = new SolidColorBrush(Color.FromArgb(255, 169, 169, 169));
                 break;
-            
+
             case "Pages":
                 MainFrame.Navigate(new PagesPage());
                 PagesButton.Foreground = new SolidColorBrush(Colors.Black);
                 PagesButton.Background = new SolidColorBrush(Color.FromArgb(255, 169, 169, 169));
                 break;
-            
+
             default:
                 Utils.ShowError($"Unknown Navbar button clicked: \"{content}\".\nSend a picture of this to me.");
                 break;
@@ -59,5 +58,26 @@ public partial class MainWindow {
             button.Background = new SolidColorBrush(Color.FromArgb(255, 45, 45, 48));
             button.Foreground = new SolidColorBrush(Colors.White);
         }
+    }
+
+    private async void SettingsButton_Click(object sender, RoutedEventArgs e) {
+        /// BLOCK OF AUTH CODE ///
+        var auth = EBayAuth.FromJson(File.ReadAllText("G:\\Programming\\Projects\\Carbon\\Carbon\\sandBoxCreds.json"));
+        auth.LaunchAuthFlow();
+
+        var redirectUrl = Microsoft.VisualBasic.Interaction.InputBox("Sign into your eBay account.\nThen paste the URL here:", "Enter URL");
+
+        var uri = new Uri(redirectUrl);
+        var queryParams = System.Web.HttpUtility.ParseQueryString(uri.Query);
+        var code = queryParams["code"];
+
+        try {
+            var tokenResponse = await auth.ExchangeCodeForTokenAsync(code);
+            MessageBox.Show($"Token response:\n{tokenResponse}");
+        }
+        catch (Exception ex) {
+            MessageBox.Show($"Error getting token:\n{ex.Message}");
+        }
+        /// BLOCK OF AUTH CODE ///
     }
 }

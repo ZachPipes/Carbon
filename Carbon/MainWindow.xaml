@@ -30,7 +30,7 @@
         </Style>
     </Window.Resources>
 
-    <DockPanel LastChildFill="True">
+    <DockPanel>
         <!-- Navbar -->
         <StackPanel Orientation="Horizontal"
                     Background="#FF2D2D30"
@@ -56,10 +56,14 @@
                     Content="Pages"
                     Style="{StaticResource NavbarButtonStyle}"
                     Click="NavbarButton_Click" />
+            <Button x:Name="Settings"
+                    Content="Settings"
+                    Style="{StaticResource NavbarButtonStyle}"
+                    Click="SettingsButton_Click"/>
         </StackPanel>
 
         <!-- Page -->
-        <Frame Name="MainFrame" Source="DashboardPage.xaml" 
+        <Frame Name="MainFrame" Source="DashboardPage.xaml"
                NavigationUIVisibility="Hidden" />
     </DockPanel>
 </Window>
