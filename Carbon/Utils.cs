@@ -1,15 +1,7 @@
 ﻿using System.Collections.ObjectModel;
-using System.Data;
-using System.Globalization;
 using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
-using CsvHelper;
-using log4net.Util;
 
 namespace Carbon;
 

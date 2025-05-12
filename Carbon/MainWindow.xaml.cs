@@ -62,6 +62,7 @@ public partial class MainWindow {
 
     private async void SettingsButton_Click(object sender, RoutedEventArgs e) {
         /// BLOCK OF AUTH CODE ///
+        //TODO: Fix next line to store data in the /Documents folder
         var auth = EBayAuth.FromJson(File.ReadAllText("G:\\Programming\\Projects\\Carbon\\Carbon\\sandBoxCreds.json"));
         auth.LaunchAuthFlow();
 
@@ -72,8 +73,8 @@ public partial class MainWindow {
         var code = queryParams["code"];
 
         try {
-            var tokenResponse = await auth.ExchangeCodeForTokenAsync(code);
-            MessageBox.Show($"Token response:\n{tokenResponse}");
+            var tokenResponse = await auth.ExchangeCodeForTokenAsync(code); // Get response
+            File.WriteAllText($@"C:\Users\{Environment.UserName}\Documents\Carbon\token.json", tokenResponse); // Write response
         }
         catch (Exception ex) {
             MessageBox.Show($"Error getting token:\n{ex.Message}");
