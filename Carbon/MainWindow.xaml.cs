@@ -1,7 +1,10 @@
 ﻿using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Text.Json;
 
 namespace Carbon;
 
@@ -60,25 +63,32 @@ public partial class MainWindow {
         }
     }
 
-    private async void SettingsButton_Click(object sender, RoutedEventArgs e) {
-        /// BLOCK OF AUTH CODE ///
-        //TODO: Fix next line to store data in the /Documents folder
-        var auth = EBayAuth.FromJson(File.ReadAllText("G:\\Programming\\Projects\\Carbon\\Carbon\\sandBoxCreds.json"));
-        auth.LaunchAuthFlow();
+    private void SettingsButton_Click(object sender, RoutedEventArgs e) {
+        var auth = EBayAuth.FromJson(File.ReadAllText(@"G:\\Programming\\Projects\\Carbon\\Carbon\\sandBoxCreds.json"));
+        auth.ExecuteEBayAuth();
+    }
 
-        var redirectUrl = Microsoft.VisualBasic.Interaction.InputBox("Sign into your eBay account.\nThen paste the URL here:", "Enter URL");
+    private async void TestButton_OnClick_Click(object sender, RoutedEventArgs e) {
+        using var client = new HttpClient();
 
-        var uri = new Uri(redirectUrl);
-        var queryParams = System.Web.HttpUtility.ParseQueryString(uri.Query);
-        var code = queryParams["code"];
+        // Set the Authorization header with your token
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", EBayAuth.GetAccessToken());
 
-        try {
-            var tokenResponse = await auth.ExchangeCodeForTokenAsync(code); // Get response
-            File.WriteAllText($@"C:\Users\{Environment.UserName}\Documents\Carbon\token.json", tokenResponse); // Write response
+        // Define the API endpoint (sandbox version)
+        var endpoint = "https://api.sandbox.ebay.com/buy/browse/v1/item_summary/search?q=laptop&limit=5";
+
+        // Send the request to the API
+        var response = await client.GetAsync(endpoint);
+
+        // Handle the response
+        if (response.IsSuccessStatusCode) {
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            Console.WriteLine("Response: " + jsonResponse);
         }
-        catch (Exception ex) {
-            MessageBox.Show($"Error getting token:\n{ex.Message}");
+        else {
+            Console.WriteLine($"Error: {response.StatusCode}");
+            string errorResponse = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"Error details: {errorResponse}");
         }
-        /// BLOCK OF AUTH CODE ///
     }
 }

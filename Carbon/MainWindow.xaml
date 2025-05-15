@@ -35,7 +35,7 @@
         <StackPanel Orientation="Horizontal"
                     Background="#FF2D2D30"
                     Height="50"
-                    DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    DockPanel.Dock="Top" >
             <Button x:Name="DashboardButton"
                     Content="Dashboard"
                     Style="{StaticResource NavbarButtonStyle}"
@@ -60,6 +60,10 @@
                     Content="Settings"
                     Style="{StaticResource NavbarButtonStyle}"
                     Click="SettingsButton_Click"/>
+            <Button x:Name="TestButton"
+                    Content="Test"
+                    Style="{StaticResource NavbarButtonStyle}"
+                    Click="TestButton_OnClick_Click"/>
         </StackPanel>
 
         <!-- Page -->
