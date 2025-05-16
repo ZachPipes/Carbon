@@ -60,10 +60,6 @@
                     Content="Settings"
                     Style="{StaticResource NavbarButtonStyle}"
                     Click="SettingsButton_Click"/>
-            <Button x:Name="TestButton"
-                    Content="Test"
-                    Style="{StaticResource NavbarButtonStyle}"
-                    Click="TestButton_OnClick_Click"/>
         </StackPanel>
 
         <!-- Page -->

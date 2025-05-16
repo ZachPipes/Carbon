@@ -1,16 +1,14 @@
-﻿using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Text.Json;
 
 namespace Carbon;
 
 public partial class MainWindow {
     public MainWindow() {
         InitializeComponent();
+        Utils.SetupAppDirectory();
+        AppState.Instance.CheckForTokenUpdate();
     }
 
     private void NavbarButton_Click(object sender, RoutedEventArgs e) {
@@ -63,32 +61,33 @@ public partial class MainWindow {
         }
     }
 
-    private void SettingsButton_Click(object sender, RoutedEventArgs e) {
-        var auth = EBayAuth.FromJson(File.ReadAllText(@"G:\\Programming\\Projects\\Carbon\\Carbon\\sandBoxCreds.json"));
-        auth.ExecuteEBayAuth();
-    }
-
-    private async void TestButton_OnClick_Click(object sender, RoutedEventArgs e) {
-        using var client = new HttpClient();
-
-        // Set the Authorization header with your token
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", EBayAuth.GetAccessToken());
-
-        // Define the API endpoint (sandbox version)
-        var endpoint = "https://api.sandbox.ebay.com/buy/browse/v1/item_summary/search?q=laptop&limit=5";
-
-        // Send the request to the API
-        var response = await client.GetAsync(endpoint);
-
-        // Handle the response
-        if (response.IsSuccessStatusCode) {
-            var jsonResponse = await response.Content.ReadAsStringAsync();
-            Console.WriteLine("Response: " + jsonResponse);
-        }
-        else {
-            Console.WriteLine($"Error: {response.StatusCode}");
-            string errorResponse = await response.Content.ReadAsStringAsync();
-            Console.WriteLine($"Error details: {errorResponse}");
+    private async void SettingsButton_Click(object sender, RoutedEventArgs e) {
+        try {
+            AuthenticationState.LaunchAuthFlow();
+            await AuthenticationState.Instance.ExecuteEbayAuth();
+        } catch (Exception ex) {
+            MessageBox.Show($"Authorization failed: {ex.Message}");
         }
     }
+
+    // private async void TestButton_OnClick_Click(object sender, RoutedEventArgs e) {
+    //     using var client = new HttpClient();
+    //
+    //     // Set the Authorization header with your token
+    //     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", EBayAuth.GetAccessToken());
+    //
+    //     // Define the API endpoint (sandbox version)
+    //     var endpoint = "https://api.sandbox.ebay.com/buy/browse/v1/item_summary/search?q=laptop&limit=5";
+    //
+    //     // Send the request to the API
+    //     var response = await client.GetAsync(endpoint);
+    //     var jsonResponse = await response.Content.ReadAsStringAsync();
+    //     
+    //     // Handle an error
+    //     if (!response.IsSuccessStatusCode) {
+    //         Console.WriteLine($"Error: {response.StatusCode}");
+    //         string errorResponse = await response.Content.ReadAsStringAsync();
+    //         Console.WriteLine($"Error details: {errorResponse}");
+    //     }
+    // }
 }

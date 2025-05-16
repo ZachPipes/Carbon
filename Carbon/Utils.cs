@@ -6,33 +6,39 @@ using System.Windows.Controls;
 namespace Carbon;
 
 public static class Utils {
-    // Displays an error with the 'errorMessage' in a pop-up window
+    public static void SetupAppDirectory() {
+        Directory.CreateDirectory(AppState.Instance.FilePath);
+
+        string[] files = ["inventory.csv", "listings.csv", "orders.csv", "settings.json", "ProgramCredentials.json"];
+        foreach (var file in files) {
+            var fullFilePath = Path.Combine(AppState.Instance.FilePath, file);
+            if (File.Exists(fullFilePath)) continue;
+            File.Create(fullFilePath).Close();
+        }
+    }
+
     public static void ShowError(string errorMessage) {
         MessageBox.Show(errorMessage, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
     }
 
-    // Loads a csv file from 'fileName' into the 'grid'
-    // Will create a directory if one DNE
+    public static int GetCurrentTimeInSeconds() {
+        var currentTime = DateTime.UtcNow;
+        var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        return (int)(currentTime - epoch).TotalSeconds;
+    }
+
     public static ObservableCollection<InventoryItem> LoadFile(string fileName, DataGrid grid) {
-        // TODO: MAKE THIS COMPATIBLE WITH ANY DIRECTORY NAME
-        var filePath = $@"C:\Users\{Environment.UserName}\Documents\Carbon";
+        var filePathTemp = AppState.Instance.FilePath;
+        filePathTemp += $@"\{fileName}.csv";
 
-        // If directory DNE -> creates directory and returns 
-        if (!Directory.Exists(filePath)) {
-            Directory.CreateDirectory(filePath);
-            return new ObservableCollection<InventoryItem>();
-        }
-
-        filePath += $@"\{fileName}.csv";
-
-        if (File.Exists(filePath)) {
-            var lines = File.ReadAllLines(filePath);
+        if (File.Exists(filePathTemp)) {
+            var lines = File.ReadAllLines(filePathTemp);
             var items = new ObservableCollection<InventoryItem>();
             for (int i = 1; i < lines.Length; i++) {
                 var line = lines[i];
                 var columns = line.Split(',');
 
-                if (columns.Length != 5) ShowError($"Invalid number of columns for {filePath} at row {i}");
+                if (columns.Length != 5) ShowError($"Invalid number of columns for {filePathTemp} at row {i}");
 
                 var item = new InventoryItem() {
                     Name = columns[0],
@@ -48,7 +54,7 @@ public static class Utils {
             return items;
         }
 
-        File.Create(filePath).Close();
+        File.Create(filePathTemp).Close();
         return new ObservableCollection<InventoryItem>();
     }
 }
