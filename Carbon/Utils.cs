@@ -9,9 +9,9 @@ public static class Utils {
     public static void SetupAppDirectory() {
         Directory.CreateDirectory(AppState.Instance.FilePath);
 
-        string[] files = ["inventory.csv", "listings.csv", "orders.csv", "settings.json", "ProgramCredentials.json"];
-        foreach (var file in files) {
-            var fullFilePath = Path.Combine(AppState.Instance.FilePath, file);
+        string[] files = ["inventory.csv", "listings.csv", "orders.csv", "settings.json", "ProgramCredentials.json", "Token.json"];
+        foreach (string file in files) {
+            string fullFilePath = Path.Combine(AppState.Instance.FilePath, file);
             if (File.Exists(fullFilePath)) continue;
             File.Create(fullFilePath).Close();
         }
@@ -22,25 +22,33 @@ public static class Utils {
     }
 
     public static int GetCurrentTimeInSeconds() {
-        var currentTime = DateTime.UtcNow;
-        var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        DateTime currentTime = DateTime.UtcNow;
+        DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
         return (int)(currentTime - epoch).TotalSeconds;
     }
 
+    public static async void TokenUpdate() {
+        try {
+            await AppState.Instance.CheckForTokenUpdate();
+        } catch (Exception ex) {
+            ShowError(ex.Message);
+        }
+    }
+
     public static ObservableCollection<InventoryItem> LoadFile(string fileName, DataGrid grid) {
-        var filePathTemp = AppState.Instance.FilePath;
+        string filePathTemp = AppState.Instance.FilePath;
         filePathTemp += $@"\{fileName}.csv";
 
         if (File.Exists(filePathTemp)) {
-            var lines = File.ReadAllLines(filePathTemp);
-            var items = new ObservableCollection<InventoryItem>();
+            string[] lines = File.ReadAllLines(filePathTemp);
+            ObservableCollection<InventoryItem> items = new();
             for (int i = 1; i < lines.Length; i++) {
-                var line = lines[i];
-                var columns = line.Split(',');
+                string line = lines[i];
+                string[] columns = line.Split(',');
 
                 if (columns.Length != 5) ShowError($"Invalid number of columns for {filePathTemp} at row {i}");
 
-                var item = new InventoryItem() {
+                InventoryItem item = new() {
                     Name = columns[0],
                     Category = columns[1],
                     Paid = double.TryParse(columns[2], out var paid) ? paid : 0,
