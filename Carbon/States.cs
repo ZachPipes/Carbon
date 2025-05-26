@@ -39,7 +39,8 @@ public sealed class AppState {
             SetDefaultTokens();
         }
 
-        IsSandboxMode = true;
+        // In sandbox mode
+        API = "sandbox.";
     }
 
     private void SetDefaultTokens() {
@@ -53,10 +54,9 @@ public sealed class AppState {
         int currentTime = Utils.GetCurrentTimeInSeconds();
 
         if (currentTime > AccessTokenExpiration || AccessToken == "") {
+            
 
-            string api = Instance.IsSandboxMode ? ".sandbox" : "";
-
-            string endpoint = $"https://api{api}.ebay.com/identity/v1/oauth2/token";
+            string endpoint = $"https://api.{API}ebay.com/identity/v1/oauth2/token";
 
             using HttpClient client = new();
 
@@ -95,7 +95,7 @@ public sealed class AppState {
     public int AccessTokenExpiration { get; set; }
     public string RefreshToken { get; set; }
     public int RefreshTokenExpiration { get; set; }
-    public bool IsSandboxMode { get; set; }
+    public string API { get; set; }
     public string FilePath { get; set; }
 }
 
@@ -128,8 +128,7 @@ public class AuthenticationState {
     public static void LaunchAuthFlow() {
         // Launch the default browser with the url
         try {
-            string api = AppState.Instance.IsSandboxMode ? ".sandbox" : "";
-            string url = $"https://auth{api}.ebay.com/oauth2/authorize?client_id={Instance.ClientId}&redirect_uri={Instance.RedirectUri}&response_type=code&scope={Instance.Scopes}";
+            string url = $"https://auth.{AppState.Instance.API}ebay.com/oauth2/authorize?client_id={Instance.ClientId}&redirect_uri={Instance.RedirectUri}&response_type=code&scope={Instance.Scopes}";
 
             Process.Start(new ProcessStartInfo {
                 FileName = url,
@@ -185,14 +184,13 @@ public class AuthenticationState {
         string credentials = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{ClientId}:{ClientSecret}"));
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials);
 
-        FormUrlEncodedContent requestBody = new FormUrlEncodedContent([
+        FormUrlEncodedContent requestBody = new([
             new KeyValuePair<string, string>("grant_type", "authorization_code"),
             new KeyValuePair<string, string>("code", code),
             new KeyValuePair<string, string>("redirect_uri", RedirectUri ?? "EMPTY REDIRECTURI")
         ]);
-
-        string api = AppState.Instance.IsSandboxMode ? ".sandbox" : "";
-        HttpResponseMessage response = await client.PostAsync($"https://api{api}.ebay.com/identity/v1/oauth2/token", requestBody);
+        
+        HttpResponseMessage response = await client.PostAsync($"https://api.{AppState.Instance.API}ebay.com/identity/v1/oauth2/token", requestBody);
 
         return response.Content.ReadAsStringAsync().Result;
     }

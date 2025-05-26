@@ -56,10 +56,18 @@
                     Content="Pages"
                     Style="{StaticResource NavbarButtonStyle}"
                     Click="NavbarButton_Click" />
-            <Button x:Name="Settings"
+            <Button x:Name="SettingsButton"
                     Content="Settings"
                     Style="{StaticResource NavbarButtonStyle}"
-                    Click="SettingsButton_Click"/>
+                    Click="NavbarButton_Click"/>
+            <Button x:Name="GetListings"
+                    Content="ListingCallTest"
+                    Style="{StaticResource NavbarButtonStyle}"
+                    Click="ListingCallTest"/>
+            <Button x:Name="UploadListing"
+                    Content="UploadListingTest"
+                    Style="{StaticResource NavbarButtonStyle}"
+                    Click="UploadListingTest"/>
         </StackPanel>
 
         <!-- Page -->
