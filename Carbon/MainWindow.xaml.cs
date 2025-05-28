@@ -1,9 +1,6 @@
-﻿using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Text.Json;
 
 namespace Carbon;
 
@@ -63,81 +60,17 @@ public partial class MainWindow {
 
     private async void ListingCallTest(object sender, RoutedEventArgs e) {
         try {
-            // Setting up the client/request
-            using HttpClient client = new();
-            string url = $"https://api.{AppState.Instance.API}ebay.com/sell/inventory/v1/inventory_item";
-            HttpRequestMessage request = new(HttpMethod.Get, url);
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", AppState.Instance.AccessToken);
-
-            HttpResponseMessage response = await client.SendAsync(request);
-
-            if (response.IsSuccessStatusCode) {
-                string responseBody = await response.Content.ReadAsStringAsync();
-                Console.WriteLine("Response body:");
-                Console.WriteLine(responseBody);
-            }
-            else {
-                Console.WriteLine($"Error: {(int)response.StatusCode} {response.ReasonPhrase}");
-                string errorContent = await response.Content.ReadAsStringAsync();
-                Console.WriteLine("Error details:");
-                Console.WriteLine(errorContent);
-            }
-
+            await ApiFunctions.GetInventory();
         } catch (Exception ex) {
-            Console.WriteLine($"Error: {ex.Message}");
+            Console.WriteLine(ex);
         }
     }
 
     private async void UploadListingTest(object sender, RoutedEventArgs e) {
         try {
-            // Setting up variables
-            using var client = new HttpClient();
-            string sku = $"UNQ-{DateTime.UtcNow:yyyyMMdd}-{Guid.NewGuid().ToString().Substring(0, 8)}";
-            string url = $"https://api.{AppState.Instance.API}ebay.com/sell/inventory/v1/inventory_item/{sku}";
-            var payload = new {
-                sku,
-                product = new {
-                    title = "Sample eBay Item Title",
-                    description = "This is a sample item description for eBay listing.",
-                    aspects = new {
-                        Brand = new[] { "SampleBrand" },
-                        Color = new[] { "Black" },
-                        Size = new[] { "M" }
-                    }
-                },
-                condition = "NEW",
-                price = new {
-                    currency = "USD",
-                    value = "19.99"
-                },
-                availability = new {
-                    shipToLocationAvailability = new {
-                        quantity = 10
-                    }
-                }
-            };
-            string jsonPayload = JsonSerializer.Serialize(payload);
-
-            HttpRequestMessage request = new(HttpMethod.Put, url) {
-                Content = new StringContent(jsonPayload, System.Text.Encoding.UTF8, "application/json")
-            };
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", AppState.Instance.AccessToken);
-            request.Content.Headers.ContentLanguage.Add("en-US");
-
-
-            HttpResponseMessage response = await client.SendAsync(request);
-
-            if (response.IsSuccessStatusCode) {
-                string responseBody = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"Code: {response.StatusCode}\nResponse: {responseBody}");
-            }
-            else {
-                Console.WriteLine($"Error: {(int)response.StatusCode} {response.ReasonPhrase}");
-                string errorBody = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(errorBody);
-            }
+            await ApiFunctions.UploadInventoryItem();
         } catch (Exception ex) {
-            Console.WriteLine($"Error: {ex.Message}");
+            Console.WriteLine(ex);
         }
     }
 

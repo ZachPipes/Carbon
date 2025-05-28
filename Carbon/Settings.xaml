@@ -8,6 +8,10 @@
       Title="Settings">
     <Grid>
         <TextBox>Welcome to settings</TextBox>
-        <Button Content="Authenticate" Width="100" Height="30" Click="Authenticate" Margin="100"/>
+        <StackPanel>
+            <Button Content="Authenticate" Width="100" Height="30" Click="Authenticate" Margin="20"/>
+            <Button Content="Print Token" Width="100" Height="30" Click="PrintToken" Margin="20"/>
+            <Button Content="Switch API" Width="100" Height="30" Click="SwitchAPI" Margin="20"/>
+        </StackPanel>
     </Grid>
 </Page>

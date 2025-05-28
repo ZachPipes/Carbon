@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
+using System.Web;
 
 namespace Carbon;
 
@@ -39,8 +40,8 @@ public sealed class AppState {
             SetDefaultTokens();
         }
 
-        // In sandbox mode
-        API = "sandbox.";
+        // Out of sandbox mode
+        API = "";
     }
 
     private void SetDefaultTokens() {
@@ -145,13 +146,13 @@ public class AuthenticationState {
         string redirectUrl = Microsoft.VisualBasic.Interaction.InputBox("Sign in to your eBay account.\nThen paste the URL here:", "Enter URL");
 
         // Parse for the code
-        Uri uri = new Uri(redirectUrl);
-        NameValueCollection queryParams = System.Web.HttpUtility.ParseQueryString(uri.Query);
-        string code = queryParams["code"];
+        Uri uri = new(redirectUrl);
+        NameValueCollection parsedQuery = HttpUtility.ParseQueryString(uri.Query);
+
+        string code = parsedQuery["code"];
 
         if (string.IsNullOrEmpty(code)) {
-            Utils.ShowError($"Code not found in url.");
-            return;
+            Console.WriteLine("Code is missing");
         }
 
         string response = await CodeForTokenExchange(code);
@@ -180,19 +181,32 @@ public class AuthenticationState {
 
     private async Task<string> CodeForTokenExchange(string code) {
         using HttpClient client = new();
-
-        string credentials = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{ClientId}:{ClientSecret}"));
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials);
-
-        FormUrlEncodedContent requestBody = new([
-            new KeyValuePair<string, string>("grant_type", "authorization_code"),
-            new KeyValuePair<string, string>("code", code),
-            new KeyValuePair<string, string>("redirect_uri", RedirectUri ?? "EMPTY REDIRECTURI")
-        ]);
         
-        HttpResponseMessage response = await client.PostAsync($"https://api.{AppState.Instance.API}ebay.com/identity/v1/oauth2/token", requestBody);
+        // Outgoing information
+        string credentials = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{ClientId}:{ClientSecret}"));
+        
+        // Building request
+        HttpRequestMessage request = new(HttpMethod.Post, "https://api.ebay.com/identity/v1/oauth2/token");
+        request.Headers.Authorization = new AuthenticationHeaderValue("Basic", credentials);
+        request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-        return response.Content.ReadAsStringAsync().Result;
+        // Building payload
+        StringBuilder payload = new();
+        payload.Append("grant_type=authorization_code");
+        payload.Append("&code=" + Uri.EscapeDataString(code));
+        if (String.IsNullOrEmpty(Instance.RedirectUri)) {
+            Console.WriteLine("RedirectUri is missing");
+            return "REDIRECT URI is missing";
+        }
+        payload.Append("&redirect_uri=" + Uri.EscapeDataString(Instance.RedirectUri));
+
+        request.Content = new StringContent(payload.ToString(), Encoding.UTF8, "application/x-www-form-urlencoded");
+
+        // Send payload
+        HttpResponseMessage response = await client.SendAsync(request);
+        string responseContent = await response.Content.ReadAsStringAsync();
+        
+        return responseContent;
     }
 
     public string? ClientId { get; set; }
