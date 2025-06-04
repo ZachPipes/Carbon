@@ -4,6 +4,7 @@ using System.Windows.Controls;
 
 namespace Carbon;
 
+//TODO: Figure out why there are duplicate entries into the datagrid(maybe switching to the database will fix this?)
 public partial class InventoryPage {
     private ObservableCollection<InventoryItem> items { get; set; }
     private ObservableCollection<InventoryItem> filteredItems { get; set; }
@@ -14,7 +15,7 @@ public partial class InventoryPage {
         InitializeComponent();
         // TODO: Make searches cross compatible, ie I can use search by name and by category at the same time
 
-        items = Utils.LoadFile("Inventory", InventoryDataGrid);
+        items = Utils.LoadFile("InventoryPages", InventoryDataGrid);
         filteredItems = new ObservableCollection<InventoryItem>(items);
         InventoryDataGrid.ItemsSource = filteredItems;
 
@@ -25,6 +26,11 @@ public partial class InventoryPage {
     }
 
     private void AddInventoryButton_OnClick(object sender, RoutedEventArgs e) {
+        // AddInventoryItem newInventoryItem = new();
+        // newInventoryItem.ShowDialog();
+    }
+    
+    private void ConvertToListingButton_OnClick(object sender, RoutedEventArgs e) {
         throw new NotImplementedException();
     }
 
@@ -63,7 +69,6 @@ public partial class InventoryPage {
     }
 
     private void SearchBoxTextChange(object sender, TextChangedEventArgs e) {
-        
         ApplyFilter("name");
     }
 }

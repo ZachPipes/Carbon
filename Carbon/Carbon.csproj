@@ -10,8 +10,63 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
       <PackageReference Include="CsvHelper" Version="33.0.1" />
       <PackageReference Include="eBay.OAuth.Client" Version="2.0.3" />
+      <PackageReference Include="SQLite" Version="3.13.0" />
+      <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Inventory\InventoryPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="View\MainWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="View\DashboardPages\DashboardPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="View\Inventory\InventoryPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+      <Page Update="View\Inventory\AddInventoryItem.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+      <Page Update="View\ListingPages\ListingsPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="View\OrderPages\OrdersPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="View\SettingsPages\Settings.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Models\" />
+      <Folder Include="ViewModels\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ApplicationDefinition Include="App.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </ApplicationDefinition>
     </ItemGroup>
 
 </Project>

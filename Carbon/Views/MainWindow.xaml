@@ -41,7 +41,7 @@
                     Style="{StaticResource NavbarButtonStyle}"
                     Click="NavbarButton_Click" />
             <Button x:Name="InventoryButton"
-                    Content="Inventory"
+                    Content="InventoryPages"
                     Style="{StaticResource NavbarButtonStyle}"
                     Click="NavbarButton_Click" />
             <Button x:Name="ListingsButton"
@@ -52,22 +52,10 @@
                     Content="Orders"
                     Style="{StaticResource NavbarButtonStyle}"
                     Click="NavbarButton_Click" />
-            <Button x:Name="PagesButton"
-                    Content="Pages"
-                    Style="{StaticResource NavbarButtonStyle}"
-                    Click="NavbarButton_Click" />
             <Button x:Name="SettingsButton"
                     Content="Settings"
                     Style="{StaticResource NavbarButtonStyle}"
                     Click="NavbarButton_Click"/>
-            <Button x:Name="GetListings"
-                    Content="ListingCallTest"
-                    Style="{StaticResource NavbarButtonStyle}"
-                    Click="ListingCallTest"/>
-            <Button x:Name="UploadListing"
-                    Content="UploadListingTest"
-                    Style="{StaticResource NavbarButtonStyle}"
-                    Click="UploadListingTest"/>
         </StackPanel>
 
         <!-- Page -->

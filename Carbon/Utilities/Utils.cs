@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,6 +17,14 @@ public static class Utils {
             File.Create(fullFilePath).Close();
         }
     }
+    
+    public static async void TokenUpdate() {
+        try {
+            await AppState.Instance.CheckForTokenUpdate();
+        } catch (Exception ex) {
+            ShowError(ex.Message);
+        }
+    }
 
     public static void ShowError(string errorMessage) {
         MessageBox.Show(errorMessage, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -27,13 +36,7 @@ public static class Utils {
         return (int)(currentTime - epoch).TotalSeconds;
     }
 
-    public static async void TokenUpdate() {
-        try {
-            await AppState.Instance.CheckForTokenUpdate();
-        } catch (Exception ex) {
-            ShowError(ex.Message);
-        }
-    }
+    
 
     public static ObservableCollection<InventoryItem> LoadFile(string fileName, DataGrid grid) {
         string filePathTemp = AppState.Instance.FilePath;

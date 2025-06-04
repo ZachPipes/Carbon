@@ -13,16 +13,16 @@ public partial class MainWindow {
 
     private void NavbarButton_Click(object sender, RoutedEventArgs e) {
         ResetButtons();
-        if (sender is not Button { Content: string content }) return;
+        if(sender is not Button { Content: string content }) return;
 
-        switch (content) {
+        switch(content) {
             case "Dashboard":
                 MainFrame.Navigate(new DashboardPage());
                 DashboardButton.Foreground = new SolidColorBrush(Colors.Black);
                 DashboardButton.Background = new SolidColorBrush(Color.FromArgb(255, 169, 169, 169));
                 break;
 
-            case "Inventory":
+            case "InventoryPages":
                 MainFrame.Navigate(new InventoryPage());
                 InventoryButton.Foreground = new SolidColorBrush(Colors.Black);
                 InventoryButton.Background = new SolidColorBrush(Color.FromArgb(255, 169, 169, 169));
@@ -40,12 +40,6 @@ public partial class MainWindow {
                 OrdersButton.Background = new SolidColorBrush(Color.FromArgb(255, 169, 169, 169));
                 break;
 
-            case "Pages":
-                MainFrame.Navigate(new PagesPage());
-                PagesButton.Foreground = new SolidColorBrush(Colors.Black);
-                PagesButton.Background = new SolidColorBrush(Color.FromArgb(255, 169, 169, 169));
-                break;
-
             case "Settings":
                 MainFrame.Navigate(new SettingsPage());
                 SettingsButton.Foreground = new SolidColorBrush(Colors.Black);
@@ -58,26 +52,10 @@ public partial class MainWindow {
         }
     }
 
-    private async void ListingCallTest(object sender, RoutedEventArgs e) {
-        try {
-            await ApiFunctions.GetInventory();
-        } catch (Exception ex) {
-            Console.WriteLine(ex);
-        }
-    }
-
-    private async void UploadListingTest(object sender, RoutedEventArgs e) {
-        try {
-            await ApiFunctions.UploadInventoryItem();
-        } catch (Exception ex) {
-            Console.WriteLine(ex);
-        }
-    }
-
     private void ResetButtons() {
-        List<Button> buttons = [DashboardButton, InventoryButton, ListingsButton, OrdersButton, PagesButton, SettingsButton];
+        List<Button> buttons = [DashboardButton, InventoryButton, ListingsButton, OrdersButton, SettingsButton];
 
-        foreach (Button button in buttons) {
+        foreach(Button button in buttons) {
             button.Background = new SolidColorBrush(Color.FromArgb(255, 45, 45, 48));
             button.Foreground = new SolidColorBrush(Colors.White);
         }

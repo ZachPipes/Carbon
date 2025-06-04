@@ -1,0 +1,29 @@
+﻿<Page x:Class="Carbon.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Title="Settings">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Button Content="Authenticate" Width="100" Height="30" Click="Authenticate" Margin="20" />
+            <Button Content="Print Token" Width="100" Height="30" Click="PrintToken" Margin="20" />
+            <Button Content="Switch API" Width="100" Height="30" Click="SwitchAPI" Margin="20" />
+            <Button Content="Function Test" Width="100" Height="30" Click="FunctionTest" Margin="20" />
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Label Margin="5" Content="generateInventoryItem() payload" />
+            <TextBox x:Name="genInvItem" Margin="5"></TextBox>
+            <Label Margin="5" Content="createOffer() sku" />
+            <TextBox x:Name="creoff" Margin="5"></TextBox>
+            <Label Margin="5" Content="publishOffer() offerID" />
+            <TextBox x:Name="puboff" Margin="5"></TextBox>
+        </StackPanel>
+    </Grid>
+</Page>

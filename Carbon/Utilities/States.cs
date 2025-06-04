@@ -1,4 +1,5 @@
 ﻿using System.Collections.Specialized;
+using System.Data.SQLite;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
@@ -213,4 +214,36 @@ public class AuthenticationState {
     public string? ClientSecret { get; set; }
     public string? RedirectUri { get; set; }
     public string? Scopes { get; set; }
+}
+
+public sealed class DatabaseState {
+    private static readonly Lazy<DatabaseState> _instance = new(() => new DatabaseState());
+    private SQLiteConnection _connection;
+
+    private DatabaseState() {
+        const string connectionString = "Data source=carbon.db";
+        _connection = new SQLiteConnection(connectionString);
+        _connection.Open();
+        
+        string[] tables = new string[3];
+        tables[0] = @"
+                      CREATE TABLE IF NOT EXISTS InventoryPages (
+                          sku TEXT NOT NULL
+                      )";
+        tables[1] = @"
+                      CREATE TABLE IF NOT EXISTS Listings (
+                          sku TEXT NOT NULL
+                      )";
+        tables[2] = @"
+                      CREATE TABLE IF NOT EXISTS Orders (
+                          sku TEXT NOT NULL
+                      )";
+        
+        foreach (string table in tables) {
+            using SQLiteCommand cmd = new(table, _connection);
+            cmd.ExecuteNonQuery();
+        }
+    }
+    
+    public static DatabaseState Instance => _instance.Value;
 }

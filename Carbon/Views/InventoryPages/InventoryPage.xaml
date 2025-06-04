@@ -1,0 +1,62 @@
+﻿<Page x:Class="Carbon.InventoryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Title="InventoryPage">
+
+    <DockPanel>
+        <!-- Inventory Toolbar -->
+        <StackPanel Orientation="Horizontal"
+                    Background="#FF51515A"
+                    Height="50"
+                    DockPanel.Dock="Top">
+            <Button x:Name="AddInventoryButton"
+                    Content="Add"
+                    Style="{StaticResource SubDashboardButtonStyle}"
+                    Click="AddInventoryButton_OnClick" />
+            <Button x:Name="ConvertToListingButton"
+                    Content="Convert to Listing"
+                    Style="{StaticResource SubDashboardButtonStyle}"
+                    Click="ConvertToListingButton_OnClick" />
+        </StackPanel>
+
+        <!-- Filter -->
+        <StackPanel Background="#FF3C3C40" Width="140" Margin="0,0,0,0">
+            <!-- Search Box -->
+            <TextBox x:Name="SearchBox" Style="{StaticResource GhosttextTextBoxStyle}" 
+                     Tag="Search by Name..."
+                     Margin="5"
+                     TextChanged="SearchBoxTextChange"/>
+            
+            <!-- Categories -->
+            <Expander Header="Categories" Foreground="White" FontWeight="Bold">
+                <ItemsControl x:Name="CategoryItemsControl" ItemsSource="{Binding UniqueCats}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding}"
+                                      Margin="5,2"
+                                      Foreground="White"
+                                      Checked="CatChkbx_Checked"
+                                      Unchecked="CatChkbx_Unchecked"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Expander>
+        </StackPanel>
+
+        <!-- InventoryData -->
+        <DataGrid x:Name="InventoryDataGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Category" Binding="{Binding Category}" />
+                <DataGridTextColumn Header="Paid" Binding="{Binding Paid}" />
+                <DataGridTextColumn Header="Location" Binding="{Binding Location}" />
+                <DataGridTextColumn Header="Bin" Binding="{Binding Bin}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </DockPanel>
+
+</Page>
