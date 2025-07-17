@@ -53,7 +53,7 @@ public partial class AddInventoryItemViewModel : ObservableObject {
     public void OnItemEdited() {
         AddInventoryItemModel last = Items.LastOrDefault();
         if(last != null && !last.IsBlank) {
-            Items.Add(new AddInventoryItemModel());
+            AddItem();
         }
     }
 

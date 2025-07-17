@@ -16,9 +16,12 @@
                     Command="{CompiledBinding GoDashboardPageCommand}" />
             <Button Content="Inventory" Classes="NavBar"
                     Command="{CompiledBinding GoInventoryPageCommand}" />
-            <Button Content="Listings" Classes="NavBar" />
-            <Button Content="Orders" Classes="NavBar" />
-            <Button Content="Settings" Classes="NavBar" />
+            <Button Content="Listings" Classes="NavBar" 
+                    Command="{CompiledBinding GoListingsPageCommand}"/>
+            <Button Content="Orders" Classes="NavBar" 
+                    Command="{CompiledBinding GoOrdersPageCommand}"/>
+            <Button Content="Settings" Classes="NavBar" 
+                    Command="{CompiledBinding GoSettingsPageCommand}"/>
         </StackPanel>
 
         <!-- Page -->
