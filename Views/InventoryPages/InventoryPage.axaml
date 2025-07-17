@@ -1,0 +1,87 @@
+<UserControl x:Class="Carbon.Views.InventoryPages.InventoryPage"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:inventoryViewModels="clr-namespace:Carbon.ViewModels.InventoryViewModels"
+             HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+             x:DataType="inventoryViewModels:InventoryViewModel">
+    
+    <DockPanel>
+        <!-- Inventory Toolbar -->
+        <StackPanel Orientation="Horizontal"
+                    Background="#FF51515A"
+                    Height="50"
+                    DockPanel.Dock="Top">
+            <Button x:Name="InventoryButtonAdd"
+                    Classes="SubNavBar"
+                    Content="Add"
+                    Command="{Binding OpenAddInventoryItemWindowCommand}"/>
+            <Button x:Name="InventoryButtonConvert"
+                    Classes="SubNavBar"
+                    Content="Convert"/>
+        </StackPanel>
+        
+        <!-- Filter -->
+        <!-- <StackPanel Background="#FF3C3C40" Width="140" Margin="0"> -->
+        <!--     ~1~ Search Box @1@ -->
+        <!--     <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" Margin="10"/> -->
+        <!--      -->
+        <!--     ~1~ Categories @1@ -->
+        <!--     <Expander Header="Categories" Foreground="White" FontWeight="Bold"> -->
+        <!--         <ItemsControl x:Name="CategoryItemsControl" ItemsSource="{Binding UniqueCats}"> -->
+        <!--             <ItemsControl.ItemTemplate> -->
+        <!--                 <DataTemplate> -->
+        <!--                     <CheckBox Content="{Binding}" -->
+        <!--                               IsChecked="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl},  -->
+        <!--                             Path=DataContext.SelectedCats, -->
+        <!--                             Converter={StaticResource CategoryContainsConverter}, -->
+        <!--                             ConverterParameter={Binding}}"/> -->
+        <!--                 </DataTemplate> -->
+        <!--             </ItemsControl.ItemTemplate> -->
+        <!--         </ItemsControl> -->
+        <!--     </Expander> -->
+        <!-- </StackPanel> -->
+        
+        <!-- Inventory Data -->
+        <DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False"
+                  CanUserReorderColumns="False" BorderBrush="Black" BorderThickness="1" 
+                  CanUserResizeColumns="False" IsReadOnly="True" HeadersVisibility="Column"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <DataGrid.Columns>
+                <!-- Selection Checkbox -->
+                <DataGridTemplateColumn Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <!-- <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" HorizontalAlignment="Center"/> -->
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+                <!-- SKU Column -->
+                <DataGridTextColumn Header="SKU" Binding="{Binding SKU}" />
+                
+                <!-- Title Column -->
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
+
+                <!-- Category Column -->
+                <DataGridTextColumn Header="Category" Binding="{Binding Category}" />
+                
+                <!-- Quantity Column -->
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
+
+                <!-- Paid Column -->
+                <DataGridTextColumn Header="Paid" Binding="{Binding Paid}" />
+
+                <!-- Location Column -->
+                <DataGridTextColumn Header="Location" Binding="{Binding Location}" />
+                
+                <!-- Bin Column -->
+                <DataGridTextColumn Header="Bin" Binding="{Binding Bin}" />
+                
+                <!-- Group Column -->
+                <DataGridTextColumn Header="Group" Binding="{Binding Group}" />
+                
+            </DataGrid.Columns>
+        </DataGrid>
+        
+    </DockPanel>
+</UserControl>

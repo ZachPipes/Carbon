@@ -1,0 +1,49 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Carbon.App"
+             RequestedThemeVariant="Default">
+  
+    <Application.Styles>
+        <!-- Navbar Buttons -->
+        <Style Selector="Button.NavBar">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="Background" Value="#FF2D2D30"/>
+            <Setter Property="BorderBrush" Value="#FF2D2D30"/>
+            <Setter Property="BorderThickness" Value="10"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!-- SubNavbar Button Style -->
+        <Style Selector="Button.SubNavBar">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#FF51515A" />
+            <Setter Property="BorderBrush" Value="#FF51515A" />
+            <Setter Property="BorderThickness" Value="10" />
+            <Setter Property="Padding" Value="10,5" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+        
+        <!-- Other -->
+        <FluentTheme />
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
+        
+    </Application.Styles>
+    
+</Application>

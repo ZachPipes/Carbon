@@ -1,0 +1,75 @@
+<Window x:Class="Carbon.Views.InventoryPages.AddInventoryItemWindow"
+        x:Name="RootWindow"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:models="clr-namespace:Carbon.Models"
+             xmlns:inventoryViewModels="clr-namespace:Carbon.ViewModels.InventoryViewModels"
+             Height="720" Width="960"
+             x:DataType="inventoryViewModels:AddInventoryItemViewModel" Title="Add Inventory Item">
+   
+    <DockPanel>
+        <DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False"
+                  CanUserReorderColumns="False" HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="1" Margin="10"
+                  CanUserResizeColumns="True" IsReadOnly="False" HeadersVisibility="Column"
+                  SelectionMode="Single" CellEditEnded="OnCellEditEnded">
+
+            <DataGrid.Columns>
+                <!-- SKU Column -->
+                <DataGridTemplateColumn Header="SKU">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Sku}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Sku, Mode=TwoWay}"
+                                     IsReadOnly="{Binding DataContext, RelativeSource={RelativeSource AncestorType=Window}}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                
+                <!-- Title Column -->
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
+                
+                <!-- Category Column | Needs to be transferred from a combobox column -->
+                <!-- <DataGridComboBoxColumn Header="Category" SelectedItemBinding="{Binding Category, Mode=TwoWay}" -->
+                <!--                          ItemsSource="{Binding DataContext.Categories, RelativeSource={RelativeSource AncestorType=DataGrid}}" /> -->
+                
+                <!-- Quantity Column -->
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
+                
+                <!-- Paid Column -->
+                <DataGridTextColumn Header="Paid" Binding="{Binding Paid}" />
+                
+                <!-- Bin Column | Needs to be transferred from a combobox column -->
+                <!-- <DataGridComboBoxColumn Header="Bin" SelectedItemBinding="{Binding Bin, Mode=TwoWay}" -->
+                <!--                         ItemsSource="{Binding DataContext.Bins, RelativeSource={RelativeSource AncestorType=DataGrid}}" /> -->
+                
+                <!-- Group Column -->
+                <DataGridTextColumn Header="Group" Binding="{Binding Group}" />
+                
+                <!-- Delete[X] Column -->
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="models:InventoryItemModel">
+                            <Button Content="X"
+                                    Command="{Binding $parent[Window].((inventoryViewModels:AddInventoryItemViewModel)DataContext).DeleteItemCommand}"
+                                    CommandParameter="{Binding}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <StackPanel>
+            <CheckBox Content="Autogenerate SKU" Width="140" Height="20" HorizontalAlignment="Right"
+                      VerticalAlignment="Top" Margin="20" IsChecked="{Binding IsSKUReadOnly}"/>
+            <Button Content="Save" Width="60" Height="40" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                    Margin="20" Command="{Binding SaveButtonCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+        </StackPanel>
+    </DockPanel>
+</Window>

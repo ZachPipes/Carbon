@@ -1,0 +1,27 @@
+<Window x:Class="Carbon.Views.MainWindow"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:Carbon.ViewModels"
+        Title="MainWindow" Height="600" Width="900"
+        x:DataType="vm:MainViewModel">
+    
+    <DockPanel>
+        <!-- Navbar -->
+        <StackPanel Orientation="Horizontal"
+                    Background="#FF2D2D30"
+                    Height="50"
+                    DockPanel.Dock="Top">
+
+            <Button Content="Dashboard" Classes="NavBar"
+                    Command="{CompiledBinding GoDashboardPageCommand}" />
+            <Button Content="Inventory" Classes="NavBar"
+                    Command="{CompiledBinding GoInventoryPageCommand}" />
+            <Button Content="Listings" Classes="NavBar" />
+            <Button Content="Orders" Classes="NavBar" />
+            <Button Content="Settings" Classes="NavBar" />
+        </StackPanel>
+
+        <!-- Page -->
+        <ContentControl Content="{CompiledBinding CurrentPage}" />
+    </DockPanel>
+</Window>
