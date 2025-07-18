@@ -1,3 +1,4 @@
+using System;
 using Avalonia.Controls;
 using Carbon.Views.DashboardPages;
 using Carbon.Views.InventoryPages;
@@ -11,33 +12,23 @@ namespace Carbon.ViewModels;
 
 public partial class MainViewModel : ObservableObject {
     [ObservableProperty] private UserControl _currentPage;
+    [ObservableProperty] private string _selectedSection;
 
     public MainViewModel() {
         CurrentPage = new DashboardPage();
+        SelectedSection = "Dashboard";
     }
 
     [RelayCommand]
-    private void GoDashboardPage() {
-        CurrentPage = new DashboardPage();
-    }
-
-    [RelayCommand]
-    private void GoInventoryPage() {
-        CurrentPage = new InventoryPage();
-    }
-    
-    [RelayCommand]
-    private void GoListingsPage() {
-        CurrentPage = new ListingsPage();
-    }
-    
-    [RelayCommand]
-    private void GoOrdersPage() {
-        CurrentPage = new OrdersPage();
-    }
-    
-    [RelayCommand]
-    private void GoSettingsPage() {
-        CurrentPage = new SettingsPage();
+    private void NavbarButton(string parameter) {
+        SelectedSection = parameter;
+        CurrentPage = parameter switch {
+            "Dashboard" => new DashboardPage(),
+            "Inventory" => new InventoryPage(),
+            "Listings" => new ListingsPage(),
+            "Orders" => new OrdersPage(),
+            "Settings" => new SettingsPage(),
+            _ => throw new InvalidOperationException($"NavbarButton() - Unknown parameter: {parameter}")
+        };
     }
 }

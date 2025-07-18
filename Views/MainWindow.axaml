@@ -12,16 +12,26 @@
                     Height="50"
                     DockPanel.Dock="Top">
 
-            <Button Content="Dashboard" Classes="NavBar"
-                    Command="{CompiledBinding GoDashboardPageCommand}" />
+            <Button x:Name="DashboardButton" Content="Dashboard" Classes="NavBar"
+                    Command="{CompiledBinding NavbarButtonCommand}" CommandParameter="Dashboard" 
+                    Foreground="{Binding SelectedSection, Converter={StaticResource SectionToForegroundConverter}, ConverterParameter=Dashboard}"/>
+            
             <Button Content="Inventory" Classes="NavBar"
-                    Command="{CompiledBinding GoInventoryPageCommand}" />
+                    Command="{CompiledBinding NavbarButtonCommand}" CommandParameter="Inventory"
+                    Foreground="{Binding SelectedSection, Converter={StaticResource SectionToForegroundConverter}, ConverterParameter=Inventory}"/>
+            
             <Button Content="Listings" Classes="NavBar" 
-                    Command="{CompiledBinding GoListingsPageCommand}"/>
+                    Command="{CompiledBinding NavbarButtonCommand}" CommandParameter="Listings"
+                    Foreground="{Binding SelectedSection, Converter={StaticResource SectionToForegroundConverter}, ConverterParameter=Listings}"/>
+            
             <Button Content="Orders" Classes="NavBar" 
-                    Command="{CompiledBinding GoOrdersPageCommand}"/>
+                    Command="{CompiledBinding NavbarButtonCommand}" CommandParameter="Orders"
+                    Foreground="{Binding SelectedSection, Converter={StaticResource SectionToForegroundConverter}, ConverterParameter=Orders}"/>
+            
             <Button Content="Settings" Classes="NavBar" 
-                    Command="{CompiledBinding GoSettingsPageCommand}"/>
+                    Command="{CompiledBinding NavbarButtonCommand}" CommandParameter="Settings"
+                    Foreground="{Binding SelectedSection, Converter={StaticResource SectionToForegroundConverter}, ConverterParameter=Settings}"/>
+            
         </StackPanel>
 
         <!-- Page -->
