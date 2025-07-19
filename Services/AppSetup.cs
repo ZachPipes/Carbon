@@ -3,8 +3,8 @@ using System.IO;
 
 namespace Carbon.Services;
 
-public class AppSetup {
-    public void SetupAppDirectory() {
+public static class AppSetup {
+    public static void SetupAppDirectory() {
         Directory.CreateDirectory(AppState.Instance.FilePath);
 
         string[] files =
@@ -16,7 +16,7 @@ public class AppSetup {
         }
     }
 
-    public async void TokenUpdate() {
+    public static async void TokenUpdate() {
         try {
             await AppState.Instance.CheckForTokenUpdate();
         } catch (Exception ex) {
